@@ -9,8 +9,8 @@ export const environment = {
 	VERSION: packageInfo.version,
 	TEMPLATE_VERSION: versioningInfo.template,
 	production: false,
-	appName: '&copy; Modulare App',
-	clientId: 'mod-app',
+	appName: '&copy; DDC-AUTH2FA',
+	clientId: 'auth2fa-app',
 	activityPIVA: undefined,
 	api: {
 		tokenApp: 'ab7414e3975ae96b2d6ef4bf641252feda9d633b',
@@ -27,7 +27,7 @@ export const environment = {
 		termPolicy: '../../assets/files/Conditions.pdf',
 	},
 	social: {
-		google_oauth_flgssl: true,
+		google_oauth_flgssl: 'true',
 		google_oauth_app_name: 'TESTING',
 		google_oauth_app_id: 'modulare_web',
 		google_oauth_client_id:
@@ -89,7 +89,7 @@ export const environment = {
 		idMessageModal: 'appMessage',
 	},
 	security: {
-		servername: 'TEST_REST',
+		servername: 'AUTH2FA_REST',
 	},
 	default: {
 		language: 'ita',
@@ -146,9 +146,9 @@ export const environment = {
 		},
 	},
 	contacts: {
-		contactName: '',
-		contactEmail: '',
-		contactPhone: '',
+		contactName: 'Amministrazione',
+		contactEmail: 'keyemporium.tech@gmail.it',
+		contactPhone: '+393281044127',
 	},
 };
 

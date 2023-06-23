@@ -1,14 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "defaultProject": "mod-app",
+  "defaultProject": "auth2fa-app",
   "newProjectRoot": "projects",
   "projects": {
-    "mod-app": {
+    "auth2fa-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "mod-app",
+      "prefix": "auth2fa-app",
       "schematics": {},
       "architect": {
         "build": {
@@ -151,17 +151,17 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mod-app:build"
+            "browserTarget": "auth2fa-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mod-app:build:production"
+              "browserTarget": "auth2fa-app:build:production"
             },
             "test": {
-              "browserTarget": "mod-app:build:test"
+              "browserTarget": "auth2fa-app:build:test"
             },
             "local": {
-              "browserTarget": "mod-app:build:local"
+              "browserTarget": "auth2fa-app:build:local"
             },
             "ci": {
               "progress": false
@@ -171,7 +171,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mod-app:build"
+            "browserTarget": "auth2fa-app:build"
           }
         },
         "test": {
@@ -215,62 +215,62 @@
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "mod-app:serve",
+            "devServerTarget": "auth2fa-app:serve",
             "watch": true,
             "headless": false
           },
           "configurations": {
             "production": {
-              "devServerTarget": "mod-app:serve:production"
+              "devServerTarget": "auth2fa-app:serve:production"
             }
           }
         },
         "ionic-cordova-build": {
           "builder": "@ionic/angular-toolkit:cordova-build",
           "options": {
-            "browserTarget": "mod-app:build"
+            "browserTarget": "auth2fa-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mod-app:build:production"
+              "browserTarget": "auth2fa-app:build:production"
             },
             "test": {
-              "browserTarget": "mod-app:build:test"
+              "browserTarget": "auth2fa-app:build:test"
             },
             "local": {
-              "browserTarget": "mod-app:build:local"
+              "browserTarget": "auth2fa-app:build:local"
             }
           }
         },
         "ionic-cordova-serve": {
           "builder": "@ionic/angular-toolkit:cordova-serve",
           "options": {
-            "cordovaBuildTarget": "mod-app:ionic-cordova-build",
-            "devServerTarget": "mod-app:serve"
+            "cordovaBuildTarget": "auth2fa-app:ionic-cordova-build",
+            "devServerTarget": "auth2fa-app:serve"
           },
           "configurations": {
             "production": {
-              "cordovaBuildTarget": "mod-app:ionic-cordova-build:production",
-              "devServerTarget": "mod-app:serve:production"
+              "cordovaBuildTarget": "auth2fa-app:ionic-cordova-build:production",
+              "devServerTarget": "auth2fa-app:serve:production"
             },
             "test": {
-              "cordovaBuildTarget": "mod-app:ionic-cordova-build:test",
-              "devServerTarget": "mod-app:serve:test"
+              "cordovaBuildTarget": "auth2fa-app:ionic-cordova-build:test",
+              "devServerTarget": "auth2fa-app:serve:test"
             },
             "local": {
-              "cordovaBuildTarget": "mod-app:ionic-cordova-build:local",
-              "devServerTarget": "mod-app:serve:local"
+              "cordovaBuildTarget": "auth2fa-app:ionic-cordova-build:local",
+              "devServerTarget": "auth2fa-app:serve:local"
             }
           }
         },
         "cypress-run": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "mod-app:serve"
+            "devServerTarget": "auth2fa-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "mod-app:serve:production"
+              "devServerTarget": "auth2fa-app:serve:production"
             }
           }
         },
@@ -284,14 +284,14 @@
         "ct": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "mod-app:serve",
+            "devServerTarget": "auth2fa-app:serve",
             "watch": true,
             "headless": false,
             "testingType": "component"
           },
           "configurations": {
             "development": {
-              "devServerTarget": "mod-app:serve:development"
+              "devServerTarget": "auth2fa-app:serve:development"
             }
           }
         }

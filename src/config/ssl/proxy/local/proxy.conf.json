@@ -1,11 +1,11 @@
 {
-  "/REST": {
-    "target": "https://localhost/test_rest",
-    "changeOrigin": true,
-    "secure": false,
-    "pathRewrite": {
-      "^/REST": ""
-    },
-    "logLevel": "debug"
-  }
+    "/REST": {
+        "target": "http://localhost/auth2fa_rest",
+        "changeOrigin": true,
+        "secure": false,
+        "pathRewrite": {
+        "^/REST": ""
+        },
+        "logLevel": "debug"
+    }
 }

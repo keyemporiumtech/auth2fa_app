@@ -6,6 +6,6 @@ export class AppPage {
 	}
 
 	getParagraphText() {
-		return element(by.deepCss('mod-app-root ion-content')).getText();
+		return element(by.css('auth2fa-app-root h1')).getText();
 	}
 }
