@@ -36,7 +36,7 @@ jobs:
         run: npm install -g @angular/cli@15.2.1
 
       - name: Build Project
-        run: ionic build --configuration=test --base-href ./
+        run: ng build --configuration=test --base-href ./
 
       - name: Copy deploy files
         run: |
