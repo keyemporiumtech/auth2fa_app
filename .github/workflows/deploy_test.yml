@@ -36,11 +36,11 @@ jobs:
         run: npm install -g @angular/cli@15.2.1
 
       - name: Build Project
-        run: ng build --configuration=test --base-href ./
+        run: ionic build --configuration=test --base-href ./
 
       - name: Copy deploy files
         run: |
-          cp -R ./src/config/deploy/test/. ./dist/${{ secrets.APP_NAME }}
+          cp -R ./src/config/deploy/test/. ./www
 
       - name: Upload FTP
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
@@ -48,6 +48,6 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/${{ secrets.APP_NAME }}/
+          local-dir: ./www/
           server-dir: ${{ secrets.PATH_TEST }}/
           dangerous-clean-slate: true
