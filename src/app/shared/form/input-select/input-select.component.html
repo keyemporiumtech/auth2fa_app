@@ -1,0 +1,24 @@
+<ion-select
+	[id]="id"
+	[ngClass]="cssInput"
+	[ngStyle]="field.cssStyle"
+	[formControl]="field.formControl"
+	[multiple]="multiple"
+	(ionCancel)="onReset()"
+	(ionChange)="manageSelected($event)"
+>
+	<ion-select-option
+		*ngFor="let option of options"
+		[value]="option.key"
+		class="{{ isSelected(option) ? 'selected' : '' }}"
+		[ngClass]="option.cssClass"
+		[ngStyle]="option.cssStyle"
+		[innerHTML]="translateKey(option.text) | translate : translateParams(option.text)"
+	></ion-select-option>
+</ion-select>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

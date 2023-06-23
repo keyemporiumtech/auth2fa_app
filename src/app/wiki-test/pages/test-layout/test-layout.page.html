@@ -1,0 +1,60 @@
+<ddc-app-header
+	[headerTitle]="'WIKI->Layout'"
+	[flgBack]="true"
+	[hrefBack]="'wiki'"
+	[flgMenuItems]="true"
+	[menuId]="'layoutMenu'"
+>
+</ddc-app-header>
+
+<ion-menu side="start" menuId="layoutMenu" contentId="main-layout">
+	<ion-header>
+		<ion-toolbar color="primary">
+			<ion-title>Layout Examples</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('COLORS', 'layoutMenu')">
+				<ion-label>Colors</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('BUTTONS', 'layoutMenu')">
+				<ion-label>Buttons</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('TOGGLE', 'layoutMenu')">
+				<ion-label>Toggle</ion-label>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+
+<ion-content class="ion-padding">
+	<a href="https://ionicframework.com/docs/v3/components" target="_blank"
+		>Componenti html con ionic</a
+	><br />
+	<a href="https://ionicframework.com/docs/api" target="_blank">Componenti ionic</a><br />
+	<a href="https://ionicframework.com/docs/theming/themes" target="_blank">Generare un tema</a
+	><br />
+
+	<div class="ion-padding-top">
+		<ion-icon
+			*ngIf="view"
+			class="pointer"
+			name="close-circle"
+			slot="end"
+			size="large"
+			(click)="set(undefined)"
+		>
+		</ion-icon>
+	</div>
+
+	<div id="main-layout" class="ion-padding-top">
+		<wiki-test-layout-colors *ngIf="view === 'COLORS'"></wiki-test-layout-colors>
+		<wiki-test-layout-buttons *ngIf="view === 'BUTTONS'"></wiki-test-layout-buttons>
+		<wiki-test-layout-toggle *ngIf="view === 'TOGGLE'"></wiki-test-layout-toggle>
+	</div>
+</ion-content>

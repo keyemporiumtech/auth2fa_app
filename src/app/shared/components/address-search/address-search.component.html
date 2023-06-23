@@ -1,0 +1,44 @@
+<ion-grid class="ion-margin-top">
+	<ion-row>
+		<ion-col size="10">
+			<ddc-app-loading [loading]="loadingResults"></ddc-app-loading>
+			<ddc-app-input-text *ngIf="field" [field]="field"></ddc-app-input-text>
+			<ion-list *ngIf="results && results.length" [ngClass]="infoClass" [ngStyle]="infoStyle">
+				<ion-item
+					*ngFor="let item of results"
+					class="item pointer"
+					[ngClass]="item.cssClass"
+					[ngStyle]="item.cssStyle"
+					[innerHTML]="translateKey(item.text) | translate : translateParams(item.text)"
+					(click)="fnSelect(item)"
+					(mouseover)="onOverItem(item)"
+					(mouseout)="onOutItem(item)"
+				></ion-item>
+
+				<ion-item *ngIf="results && results.length && flgMore">
+					<ion-button class="ion-margin" color="primary" (click)="more()">
+						<ion-icon name="chevron-down-circle" item-start></ion-icon>
+					</ion-button>
+				</ion-item>
+			</ion-list>
+
+			<ion-list
+				*ngIf="(!results || !results.length) && showNoResults"
+				[ngClass]="infoClass"
+				[ngStyle]="infoStyle"
+			>
+				<ion-item
+					class="item item-not-found text-muted"
+					[innerHTML]="translateKey(textNotFound) | translate : translateParams(textNotFound)"
+				>
+				</ion-item>
+			</ion-list>
+		</ion-col>
+
+		<ion-col size="2">
+			<ion-button class="ion-margin" color="primary" (click)="fnSearch()">
+				<ion-icon name="search-circle" item-start></ion-icon>
+			</ion-button>
+		</ion-col>
+	</ion-row>
+</ion-grid>

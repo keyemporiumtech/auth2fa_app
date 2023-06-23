@@ -1,0 +1,13 @@
+<form [formGroup]="formNation">
+	<ion-label *ngIf="showLabel" position="floating">
+		{{ translateKey(selectNations.label) | translate : translateParams(selectNations.label) }}
+	</ion-label>
+	<ng-container *ngIf="!showImage">
+		<ddc-app-input-select #nations [id]="id" [field]="selectNations" [options]="optionNations">
+		</ddc-app-input-select>
+	</ng-container>
+	<ng-container *ngIf="showImage">
+		<ddc-app-input-select-html #nations [id]="id" [field]="selectNations" [options]="optionNations">
+		</ddc-app-input-select-html>
+	</ng-container>
+</form>

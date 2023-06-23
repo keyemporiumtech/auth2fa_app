@@ -1,0 +1,22 @@
+<ion-header>
+	<ion-toolbar class="modal-header">
+		<ion-title
+			*ngIf="modalTitle"
+			[innerHtml]="translateKey(modalTitle) | translate : translateParams(modalTitle)"
+		>
+		</ion-title>
+		<ion-icon
+			class="pointer"
+			[name]="iconClose"
+			slot="end"
+			size="large"
+			(click)="close()"
+		></ion-icon>
+	</ion-toolbar>
+</ion-header>
+<ion-content *ngIf="templateBody" fullscreen class="ion-padding">
+	<ng-container *ngTemplateOutlet="templateBody"></ng-container>
+</ion-content>
+<ng-container *ngIf="templateFooter">
+	<ng-container *ngTemplateOutlet="templateFooter"></ng-container>
+</ng-container>

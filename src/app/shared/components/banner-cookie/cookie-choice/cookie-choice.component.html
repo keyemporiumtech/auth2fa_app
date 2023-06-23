@@ -1,0 +1,313 @@
+<section>
+	<ion-button color="primary" (click)="goToTab(1)">{{
+		'APP.COOKIE.CHOICE.NAV1' | translate
+	}}</ion-button>
+	<ion-button color="primary" (click)="goToTab(2)">{{
+		'APP.COOKIE.CHOICE.NAV2' | translate
+	}}</ion-button>
+	<ion-button color="primary" (click)="goToTab(3)">{{
+		'APP.COOKIE.CHOICE.NAV3' | translate
+	}}</ion-button>
+</section>
+
+<ion-content class="ion-padding">
+	<div *ngIf="currentTab === 1">
+		<ion-text>
+			<h4>{{ 'APP.COOKIE.CHOICE.NAV1' | translate }}</h4>
+		</ion-text>
+		<ion-text [innerHTML]="'APP.COOKIE.CHOICE.NAV1_INFO' | translate"></ion-text>
+	</div>
+
+	<div *ngIf="currentTab === 2">
+		<ion-text>
+			<h4>{{ 'APP.COOKIE.CHOICE.NAV2' | translate }}</h4>
+		</ion-text>
+		<ion-text [innerHTML]="'APP.COOKIE.CHOICE.NAV2_INFO' | translate"></ion-text>
+
+		<!--NECESSARY-->
+		<ion-grid>
+			<ion-row>
+				<ion-col size="10">
+					<ion-button expand="full" color="secondary" (click)="accordionNecessary.toggle()">
+						{{ 'APP.COOKIE.NECESSARY.TITLE' | translate }}
+						<ion-badge color="light" class="ion-margin">{{ listNecessary.length }}</ion-badge>
+					</ion-button>
+				</ion-col>
+				<ion-col size="2">
+					<ion-toggle color="secondary" disabled [checked]="isNecessary"></ion-toggle>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col>
+					<ddc-app-accordion #accordionNecessary>
+						<div [innerHTML]="'APP.COOKIE.NECESSARY.DESCRIPTION' | translate"></div>
+						<ion-card color="secondary" *ngFor="let cookie of listNecessary">
+							<ion-card-header>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+									>: <span>{{ cookie.durationDesc }}</span>
+								</ion-card-subtitle>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+									>: <span>{{ cookie.protocol }}</span>
+								</ion-card-subtitle>
+								<ion-card-title>{{ cookie.name }}</ion-card-title>
+							</ion-card-header>
+
+							<ion-card-content>
+								<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+									{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+								</a>
+								<hr />
+								<div [innerHTML]="cookie.description | translate"></div>
+							</ion-card-content>
+						</ion-card>
+					</ddc-app-accordion>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<!--PREFERENCE-->
+		<ion-grid>
+			<ion-row>
+				<ion-col size="10">
+					<ion-button expand="full" color="primary" (click)="accordionPreference.toggle()">
+						{{ 'APP.COOKIE.PREFERENCE.TITLE' | translate }}
+						<ion-badge color="light" class="ion-margin">{{ listPreference.length }}</ion-badge>
+					</ion-button>
+				</ion-col>
+				<ion-col size="2">
+					<ion-toggle
+						color="primary"
+						[disabled]="!listPreference || !listPreference.length"
+						[checked]="isPreference"
+						(ionChange)="toggleCheck(cookieType.PREFERENCE, $event)"
+					>
+					</ion-toggle>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col>
+					<ddc-app-accordion #accordionPreference>
+						<div [innerHTML]="'APP.COOKIE.PREFERENCE.DESCRIPTION' | translate"></div>
+						<ion-card color="primary" *ngFor="let cookie of listPreference">
+							<ion-card-header>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+									>: <span>{{ cookie.durationDesc }}</span>
+								</ion-card-subtitle>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+									>: <span>{{ cookie.protocol }}</span>
+								</ion-card-subtitle>
+								<ion-card-title>{{ cookie.name }}</ion-card-title>
+							</ion-card-header>
+
+							<ion-card-content>
+								<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+									{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+								</a>
+								<hr />
+								<div [innerHTML]="cookie.description | translate"></div>
+							</ion-card-content>
+						</ion-card>
+					</ddc-app-accordion>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<!--STATISTIC-->
+		<ion-grid>
+			<ion-row>
+				<ion-col size="10">
+					<ion-button expand="full" color="primary" (click)="accordionStatistic.toggle()">
+						{{ 'APP.COOKIE.STATISTIC.TITLE' | translate }}
+						<ion-badge color="light" class="ion-margin">{{ listStatistic.length }}</ion-badge>
+					</ion-button>
+				</ion-col>
+				<ion-col size="2">
+					<ion-toggle
+						color="primary"
+						[disabled]="!listStatistic || !listStatistic.length"
+						[checked]="isStatistic"
+						(ionChange)="toggleCheck(cookieType.STATISTIC, $event)"
+					>
+					</ion-toggle>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col>
+					<ddc-app-accordion #accordionStatistic>
+						<div [innerHTML]="'APP.COOKIE.STATISTIC.DESCRIPTION' | translate"></div>
+						<ion-card color="primary" *ngFor="let cookie of listStatistic">
+							<ion-card-header>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+									>: <span>{{ cookie.durationDesc }}</span>
+								</ion-card-subtitle>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+									>: <span>{{ cookie.protocol }}</span>
+								</ion-card-subtitle>
+								<ion-card-title>{{ cookie.name }}</ion-card-title>
+							</ion-card-header>
+
+							<ion-card-content>
+								<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+									{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+								</a>
+								<hr />
+								<div [innerHTML]="cookie.description | translate"></div>
+							</ion-card-content>
+						</ion-card>
+					</ddc-app-accordion>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<!--MARKETING-->
+		<ion-grid>
+			<ion-row>
+				<ion-col size="10">
+					<ion-button expand="full" color="primary" (click)="accordionMarketing.toggle()">
+						{{ 'APP.COOKIE.MARKETING.TITLE' | translate }}
+						<ion-badge color="light" class="ion-margin">{{ listMarketing.length }}</ion-badge>
+					</ion-button>
+				</ion-col>
+				<ion-col size="2">
+					<ion-toggle
+						color="primary"
+						[disabled]="!listMarketing || !listMarketing.length"
+						[checked]="isMarketing"
+						(ionChange)="toggleCheck(cookieType.MARKETING, $event)"
+					>
+					</ion-toggle>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col>
+					<ddc-app-accordion #accordionMarketing>
+						<div [innerHTML]="'APP.COOKIE.MARKETING.DESCRIPTION' | translate"></div>
+						<ion-card color="primary" *ngFor="let cookie of listMarketing">
+							<ion-card-header>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+									>: <span>{{ cookie.durationDesc }}</span>
+								</ion-card-subtitle>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+									>: <span>{{ cookie.protocol }}</span>
+								</ion-card-subtitle>
+								<ion-card-title>{{ cookie.name }}</ion-card-title>
+							</ion-card-header>
+
+							<ion-card-content>
+								<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+									{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+								</a>
+								<hr />
+								<div [innerHTML]="cookie.description | translate"></div>
+							</ion-card-content>
+						</ion-card>
+					</ddc-app-accordion>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<!--NOT_CLASSIFIED-->
+		<ion-grid>
+			<ion-row>
+				<ion-col size="10">
+					<ion-button expand="full" color="primary" (click)="accordionNotClassified.toggle()">
+						{{ 'APP.COOKIE.NOT_CLASSIFIED.TITLE' | translate }}
+						<ion-badge color="light" class="ion-margin">{{ listNotClassified.length }}</ion-badge>
+					</ion-button>
+				</ion-col>
+				<ion-col size="2">
+					<ion-toggle
+						color="primary"
+						[disabled]="!listNotClassified || !listNotClassified.length"
+						[checked]="isNotClassified"
+						(ionChange)="toggleCheck(cookieType.NOT_CLASSIFIED, $event)"
+					>
+					</ion-toggle>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col>
+					<ddc-app-accordion #accordionNotClassified>
+						<div [innerHTML]="'APP.COOKIE.NOT_CLASSIFIED.DESCRIPTION' | translate"></div>
+						<ion-card color="primary" *ngFor="let cookie of listNotClassified">
+							<ion-card-header>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.EXPIRATION' | translate }}</strong
+									>: <span>{{ cookie.durationDesc }}</span>
+								</ion-card-subtitle>
+								<ion-card-subtitle>
+									<strong>{{ 'APP.LABEL.TYPE' | translate }}</strong
+									>: <span>{{ cookie.protocol }}</span>
+								</ion-card-subtitle>
+								<ion-card-title>{{ cookie.name }}</ion-card-title>
+							</ion-card-header>
+
+							<ion-card-content>
+								<a *ngIf="cookie.link" class="card-link" href="{{ cookie.link }}" target="_blank">
+									{{ 'APP.COOKIE.LINK_EXTERNAL' | translate }}
+								</a>
+								<hr />
+								<div [innerHTML]="cookie.description | translate"></div>
+							</ion-card-content>
+						</ion-card>
+					</ddc-app-accordion>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+
+	<div *ngIf="currentTab === 3">
+		<ion-text>
+			<h4>{{ 'APP.COOKIE.CHOICE.NAV3' | translate }}</h4>
+		</ion-text>
+		<ion-text [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO1' | translate"></ion-text>
+		<br />
+		<ion-text [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO2' | translate"></ion-text>
+		<br />
+		<ion-text [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO3' | translate"></ion-text>
+		<br />
+		<ion-text>
+			<span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO4' | translate"></span>
+			<a (click)="goToPageCookie()">{{ 'APP.COOKIE.CHOICE.NAV3_INFO4_LINK' | translate }}</a>
+		</ion-text>
+		<br />
+		<ion-text>
+			<span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO5' | translate"></span>
+			<a (click)="goToPrivacyPolicy()">{{ 'APP.COOKIE.CHOICE.NAV3_INFO5_LINK' | translate }}</a>
+		</ion-text>
+		<br />
+		<ion-text>
+			<span [innerHTML]="'APP.COOKIE.CHOICE.NAV3_INFO6' | translate"></span>
+			<a (click)="goToCookiePolicy()">{{ 'APP.COOKIE.CHOICE.NAV3_INFO6_LINK' | translate }}</a>
+		</ion-text>
+		<br />
+	</div>
+
+	<hr />
+	<p
+		[innerHTML]="'APP.COOKIE.LAST_UPDATE' | translate : { dtaCookie: lastUpdate, appName: appName }"
+	></p>
+	<hr />
+	<ion-button color="secondary" (click)="refuse()">{{
+		'APP.COOKIE.CHOICE.REFUSE' | translate
+	}}</ion-button>
+	<ion-button color="primary" (click)="accept()">{{
+		'APP.COOKIE.CHOICE.ACCEPT' | translate
+	}}</ion-button>
+	<ion-button color="primary" (click)="acceptAll()">{{
+		'APP.COOKIE.CHOICE.ACCEPT_ALL' | translate
+	}}</ion-button>
+</ion-content>

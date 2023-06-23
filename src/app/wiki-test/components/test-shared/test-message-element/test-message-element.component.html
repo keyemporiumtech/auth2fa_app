@@ -1,0 +1,70 @@
+<ion-text>
+	<h1>Modal</h1>
+</ion-text>
+<ion-list>
+	<ion-item button (click)="modal(EnumMessageType.INFO, 'miaModale')">
+		<ion-label>INFO</ion-label>
+	</ion-item>
+	<ion-item button (click)="modal(EnumMessageType.WARNING, 'miaModale')">
+		<ion-label>WARNING</ion-label>
+	</ion-item>
+	<ion-item button (click)="modal(EnumMessageType.ERROR, 'miaModale')">
+		<ion-label>ERROR</ion-label>
+	</ion-item>
+	<ion-item button (click)="modal(EnumMessageType.EXCEPTION, 'miaModale')">
+		<ion-label>EXCEPTION</ion-label>
+	</ion-item>
+	<ion-item-divider></ion-item-divider>
+	<ion-item button (click)="modal(EnumMessageType.INFO, 'miaModale', 200)">
+		<ion-label>CODICE 200</ion-label>
+	</ion-item>
+	<ion-item button (click)="behaviourModal(EnumMessageType.INFO, 'miaModale')">
+		<ion-label>BEHAVIOUR</ion-label>
+	</ion-item>
+</ion-list>
+<ddc-app-message-element
+	[typeComponent]="'MODAL'"
+	[idMessage]="'miaModale'"
+></ddc-app-message-element>
+
+<ion-text>
+	<h1>
+		Div <ion-text color="danger"><i>Non usare i div</i></ion-text>
+	</h1>
+</ion-text>
+<ion-list>
+	<ion-item button (click)="div(EnumMessageType.INFO, 'mioDiv')">
+		<ion-label>INFO</ion-label>
+	</ion-item>
+	<ion-item button (click)="div(EnumMessageType.WARNING, 'mioDiv')">
+		<ion-label>WARNING</ion-label>
+	</ion-item>
+	<ion-item button (click)="div(EnumMessageType.ERROR, 'mioDiv')">
+		<ion-label>ERROR</ion-label>
+	</ion-item>
+	<ion-item button (click)="div(EnumMessageType.EXCEPTION, 'mioDiv')">
+		<ion-label>EXCEPTION</ion-label>
+	</ion-item>
+	<ion-item-divider></ion-item-divider>
+	<ion-item button (click)="div(EnumMessageType.INFO, 'mioDiv', 200)">
+		<ion-label>CODICE 200</ion-label>
+	</ion-item>
+	<ion-item button (click)="behaviourModal(EnumMessageType.INFO, 'mioDiv')">
+		<ion-label>BEHAVIOUR</ion-label>
+	</ion-item>
+</ion-list>
+<ddc-app-message-element [typeComponent]="'DIV'" [idMessage]="'mioDiv'"></ddc-app-message-element>
+
+<ion-text>
+	<h1>Route to principal</h1>
+</ion-text>
+<ion-list>
+	<ion-item button (click)="modal(EnumMessageType.INFO, idMessageModal)">
+		<ion-label>MODAL</ion-label>
+	</ion-item>
+	<ion-item button (click)="div(EnumMessageType.INFO, idMessageDiv)">
+		<ion-label
+			>DIV <ion-text color="danger"><i>DISATTIVATO</i></ion-text>
+		</ion-label>
+	</ion-item>
+</ion-list>

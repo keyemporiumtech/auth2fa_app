@@ -1,0 +1,17 @@
+<ion-label class="ion-text-wrap pointer" (click)="toggle(key)">
+	{{ translateKey(label) | translate : translateParams(label) }}
+	<ng-container *ngIf="orders && orders.length">
+		<ion-icon
+			*ngIf="existOrder(key, 'asc')"
+			[name]="iconAsc"
+			color="{{ existOrder(key, 'asc') ? 'dark' : '' }}"
+		>
+		</ion-icon>
+		<ion-icon
+			*ngIf="existOrder(key, 'desc')"
+			[name]="iconDesc"
+			color="{{ existOrder(key, 'desc') ? 'dark' : '' }}"
+		>
+		</ion-icon>
+	</ng-container>
+</ion-label>

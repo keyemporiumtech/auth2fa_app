@@ -1,0 +1,119 @@
+<form [formGroup]="form">
+	<ion-grid>
+		<ion-row>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_url.label) | translate : translateParams(FLD_url.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'url'" [field]="FLD_url"></ddc-app-input-text>
+			</ion-col>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_path.label) | translate : translateParams(FLD_path.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'path'" [field]="FLD_path"></ddc-app-input-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col [size]="4">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_name.label) | translate : translateParams(FLD_name.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'name'" [field]="FLD_name"></ddc-app-input-text>
+			</ion-col>
+			<ion-col [size]="4">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_cid.label) | translate : translateParams(FLD_cid.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'cid'" [field]="FLD_cid"></ddc-app-input-text>
+			</ion-col>
+			<ion-col [size]="4">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_cod.label) | translate : translateParams(FLD_cod.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'cod'" [field]="FLD_cod"></ddc-app-input-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col [size]="12">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_desc.label) | translate : translateParams(FLD_desc.label) }}
+				</ion-label>
+				<ddc-app-input-textarea [id]="'desc'" [field]="FLD_desc"></ddc-app-input-textarea>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_ext.label) | translate : translateParams(FLD_ext.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'ext'" [field]="FLD_ext"></ddc-app-input-text>
+			</ion-col>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_size.label) | translate : translateParams(FLD_size.label) }}
+				</ion-label>
+				<ddc-app-input-number [id]="'size'" [field]="FLD_size"></ddc-app-input-number>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_mimetype.label) | translate : translateParams(FLD_mimetype.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'mimetype'" [field]="FLD_mimetype"></ddc-app-input-text>
+			</ion-col>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_type.label) | translate : translateParams(FLD_type.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'type'" [field]="FLD_type"></ddc-app-input-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col [size]="12">
+				<ion-label position="floating"
+					>{{
+						translateKey(FLD_tpattachment.label)
+							| translate : translateParams(FLD_tpattachment.label)
+					}}
+				</ion-label>
+				<ddc-app-input-select
+					[id]="'tpattachment'"
+					[field]="FLD_tpattachment"
+					[options]="tpattachments"
+				>
+				</ddc-app-input-select>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</form>
+
+<div class="ion-padding">
+	<ion-button class="ion-margin" color="dark" (click)="changeMode(formMode.UPDATE)">
+		<ion-icon name="create" item-start></ion-icon>
+	</ion-button>
+	<ion-button class="ion-margin" color="dark" (click)="changeMode(formMode.DETAIL)">
+		<ion-icon name="eye" item-start></ion-icon>
+	</ion-button>
+	<ion-button class="ion-margin" color="dark" [disabled]="!form.valid" (click)="save()">
+		<ion-icon name="save" item-start></ion-icon>
+	</ion-button>
+</div>
+
+<div *ngIf="modelToSave" class="ion-padding-vertical">{{ modelToSave | json }}</div>
+
+<!-- OTHER -->
+<div *ngIf="model">
+	<strong>sizeString:</strong> {{ model?.sizeString }}<br />
+	<strong>sizeStringFixed:</strong> {{ model?.sizeStringFixed }}<br />
+	<div *ngIf="model.fileEmbed" class="mt-1" style="width: 20%; height: 150px">
+		<ddc-app-ki-embed-file [object]="model.fileEmbed" [flagClose]="false" [flagTitle]="true">
+		</ddc-app-ki-embed-file>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "strictPropertyInitialization": false,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": [
+      "ES2022",
+      "dom",
+      "dom.iterable"
+    ],
+    "paths": {
+      "@ddc/kit": [
+        "src/app/kit",
+        "src/app/kit/*"
+      ],
+      "@ddc/rest": [
+        "src/app/rest",
+        "src/app/rest/*"
+      ],
+      "@ddc/kit-ionic": [
+        "src/app/kit-ionic",
+        "src/app/kit-ionic/*"
+      ],
+      "@ddc/oauth-social": [
+        "src/app/oauth-social",
+        "src/app/oauth-social/*"
+      ],
+      "@swimlane/ngx-charts": [
+        "src/app/ngx-charts",
+        "src/app/ngx-charts/*"
+      ],
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": false,
+    "enableIvy": true
+  }
+}

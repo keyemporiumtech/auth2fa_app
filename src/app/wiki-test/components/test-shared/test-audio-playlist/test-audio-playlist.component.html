@@ -1,0 +1,25 @@
+<ion-text>
+	<h1>Audio Playlist</h1>
+</ion-text>
+
+<ddc-app-audio-playlist [playlist]="playlist" [title]="'playlist 1'"></ddc-app-audio-playlist>
+
+<ion-text>
+	<h1>Audio Playlist con autoplay</h1>
+</ion-text>
+
+<ion-button *ngIf="!autoplayExample" ion-button color="primary" (click)="autoplayStart()"
+	>Avvia</ion-button
+>
+<ion-button *ngIf="autoplayExample" ion-button color="secondary" (click)="autoplayStop()"
+	>Stoppa</ion-button
+>
+
+<ddc-app-audio-playlist
+	*ngIf="autoplayExample"
+	[playlist]="playlist"
+	[title]="'playlist 2'"
+	[autoplay]="true"
+	[loop]="true"
+>
+</ddc-app-audio-playlist>

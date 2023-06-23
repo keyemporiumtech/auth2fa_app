@@ -1,0 +1,20 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons *ngIf="flgBack" slot="start">
+			<ion-back-button defaultHref="{{ hrefBack }}"></ion-back-button>
+		</ion-buttons>
+		<ion-buttons *ngIf="flgMenuItems" slot="start">
+			<ion-menu-button
+				menu="{{ menuId ? menuId : 'start' }}"
+				(click)="openMenu()"
+			></ion-menu-button>
+		</ion-buttons>
+
+		<ion-toolbar>
+			<ion-thumbnail *ngIf="flgLogo" slot="start">
+				<ion-img [src]="'assets/logo.png'"></ion-img>
+			</ion-thumbnail>
+			<ion-title *ngIf="headerTitle" [innerHtml]="headerTitle | translate"></ion-title>
+		</ion-toolbar>
+	</ion-toolbar>
+</ion-header>

@@ -1,0 +1,322 @@
+<ion-text>
+	<h4>Modulo Html</h4>
+</ion-text>
+
+<ion-button expand="block" (click)="progressBarExample.toggle()"> ProgressBarComponent </ion-button>
+
+<ddc-app-accordion #progressBarExample>
+	<div class="ion-margin-top">
+		Il componente <strong>ProgressBarComponent</strong> consente di eseguire una barra di
+		progressione percentuale e viene configuarto con i seguenti parametri di input
+		<ul>
+			<li>
+				<strong>backgroundColor</strong> che definisce il colore dello sfondo vuoto della barra di
+				avanzamento
+			</li>
+			<li><strong>color</strong> che definisce il colore proprio della barra di avanzamento</li>
+			<li><strong>height</strong> che definisce lo spessore in altezza della barra</li>
+			<li>
+				<strong>size</strong> dimensioni senza specificare il size ('xs' | 'sm' | 'md' | 'lg' |
+				'xlg')
+			</li>
+			<li><strong>rounded</strong> se true mostra la barra con i bordi arrotondati</li>
+			<li><strong>showText</strong> se true mostra il testo di avanzamento percentuale</li>
+			<li><strong>hideOnComplete</strong> se true nasconde la progress al termine</li>
+			<li>
+				<strong>showOnStart</strong> se true visualizza la progress dopo l'avvio (necessita di un
+				pulsante o function che fa partire il loading)
+			</li>
+			<li><strong>intervalGrow</strong> in secondi indica il tempo di avanzamento del loader</li>
+			<li><strong>timeoutHide</strong> in secondi indica il tempo di spegnimento del loader</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+      ```html
+        &lt;ion-button class="ion-margin" (click)="progressBar1.start()"&gt;Start&lt;/ion-button&gt;
+        &lt;ion-button class="ion-margin" color="danger" (click)="progressBar1.stop()"&gt;Stop&lt;/ion-button&gt;
+
+        &lt;ddc-init-progress-bar #progressBar1 [cssClass]="'mt-2'" [backgroundColor]="'darkgray'" [color]="'darkblue'"
+          [height]="'16px'" [intervalGrow]="0.05" [showText]="true"&gt;
+        &lt;/ddc-init-progress-bar&gt;
+
+      ```
+
+    </div>
+  </pre>
+	<ion-text>
+		<h5>Progress Bar semplice</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressBar1.start()">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressBar1.pause()">Pause</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressBar1.resume()">Resume</ion-button>
+	<ion-button class="ion-margin" color="danger" (click)="progressBar1.stop()">Stop</ion-button>
+	<ddc-init-progress-bar #progressBar1 [cssClass]="'mt-2'" [showText]="true">
+	</ddc-init-progress-bar>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressBar con showOnStart e hideOnComplete</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressBar2.start()">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressBar2.pause()">Pause</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressBar2.resume()">Resume</ion-button>
+	<ion-button class="ion-margin" color="danger" (click)="progressBar2.stop()">Stop</ion-button>
+	<ddc-init-progress-bar
+		#progressBar2
+		[cssClass]="'mt-2'"
+		[showText]="true"
+		[showOnStart]="true"
+		[hideOnComplete]="true"
+	>
+	</ddc-init-progress-bar>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressBar con start da 30%</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressBar3.start(30)">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressBar3.pause()">Pause</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressBar3.resume()">Resume</ion-button>
+	<ion-button class="ion-margin" color="danger" (click)="progressBar3.stop()">Stop</ion-button>
+	<ddc-init-progress-bar #progressBar3 [cssClass]="'mt-2'" [showText]="true">
+	</ddc-init-progress-bar>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressBar sizes</h5>
+	</ion-text>
+	<strong>personal 75px</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [height]="'75px'"> </ddc-init-progress-bar>
+	<strong>xs</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'xs'"> </ddc-init-progress-bar>
+	<strong>sm</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'sm'"> </ddc-init-progress-bar>
+	<strong>md</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'md'"> </ddc-init-progress-bar>
+	<strong>lg</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'lg'"> </ddc-init-progress-bar>
+	<strong>xlg</strong>
+	<ddc-init-progress-bar [cssClass]="'mt-2'" [size]="'xlg'"> </ddc-init-progress-bar>
+</ddc-app-accordion>
+
+<ion-button class="ion-margin-top" expand="block" (click)="progressCircleExample.toggle()">
+	progressCircleComponent
+</ion-button>
+
+<ddc-app-accordion #progressCircleExample>
+	<div class="ion-margin-top">
+		Il componente <strong>ProgressCircleComponent</strong> consente di eseguire una cerchio di
+		progressione percentuale e viene configuarto con i seguenti parametri di input
+		<ul>
+			<li>
+				<strong>backgroundColor</strong> che definisce il colore dello sfondo vuoto del cerchio di
+				avanzamento
+			</li>
+			<li>
+				<strong>borderColor</strong> che definisce il colore del bordo sulla parte vuoto del cerchio
+				di avanzamento
+			</li>
+			<li>
+				<strong>backgroundColorInner</strong> che definisce il colore dello sfondo del cerchietto
+				interno
+			</li>
+			<li><strong>fillfull</strong> se true mostra la torta piena senza il cerchietto centrale</li>
+			<li><strong>color</strong> che definisce il colore proprio del cerchio di avanzamento</li>
+			<li><strong>height</strong> che definisce l'altezza e la larghezza del cerchio</li>
+			<li>
+				<strong>size</strong> dimensioni senza specificare height ('xs' | 'sm' | 'md' | 'lg' |
+				'xlg')
+			</li>
+			<li><strong>showText</strong> se true mostra il testo di avanzamento percentuale</li>
+			<li><strong>hideOnComplete</strong> se true nasconde la progress al termine</li>
+			<li>
+				<strong>showOnStart</strong> se true visualizza la progress dopo l'avvio (necessita di un
+				pulsante o function che fa partire il loading)
+			</li>
+			<li><strong>intervalGrow</strong> in secondi indica il tempo di avanzamento del loader</li>
+			<li><strong>timeoutHide</strong> in secondi indica il tempo di spegnimento del loader</li>
+			<li><strong>showDot</strong> se true mostra un pallino in movimento</li>
+			<li>
+				<strong>displayInline</strong> se true mostra il loader accanto all'elemento che lo precede
+				(default true)
+			</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+      ```html
+        &lt;ion-button class="ion-margin" (click)="progressCircle1.start()"&gt;Start&lt;/ion-button&gt;
+        &lt;ion-button class="ion-margin" color="danger" (click)="progressCircle1.stop()"&gt;Stop&lt;/ion-button&gt;
+
+        &lt;ddc-init-progress-circle #progressCircle1 [cssClass]="'mt-2'" [backgroundColor]="'darkgray'" [color]="'darkblue'"
+            [height]="'16px'" [intervalGrow]="0.05" [showText]="true"&gt;
+          &lt;/ddc-init-progress-circle&gt;
+
+      ```
+
+    </div>
+  </pre>
+	<ion-text>
+		<h5>Progress Circle semplice</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressCircle1.start()">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle1.pause()"
+		>Pause</ion-button
+	>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle1.resume()"
+		>Resume</ion-button
+	>
+	<ion-button class="ion-margin" color="danger" (click)="progressCircle1.stop()">Stop</ion-button>
+	<ddc-init-progress-circle #progressCircle1 [cssClass]="'mt-2'" [showText]="true">
+	</ddc-init-progress-circle>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressCircle con showOnStart e hideOnComplete</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressCircle2.start()">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle2.pause()"
+		>Pause</ion-button
+	>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle2.resume()"
+		>Resume</ion-button
+	>
+	<ion-button class="ion-margin" color="danger" (click)="progressCircle2.stop()">Stop</ion-button>
+	<ddc-init-progress-circle
+		#progressCircle2
+		[cssClass]="'mt-2'"
+		[showOnStart]="true"
+		[hideOnComplete]="true"
+		[showText]="true"
+	>
+	</ddc-init-progress-circle>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressCircle con start da 30%</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressCircle3.start(30)">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle3.pause()"
+		>Pause</ion-button
+	>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle3.resume()"
+		>Resume</ion-button
+	>
+	<ion-button class="ion-margin" color="danger" (click)="progressCircle3.stop()">Stop</ion-button>
+	<ddc-init-progress-circle #progressCircle3 [cssClass]="'mt-2'" [showText]="true">
+	</ddc-init-progress-circle>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressCircle con start da 70%</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressCircle4.start(70)">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle4.pause()"
+		>Pause</ion-button
+	>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle4.resume()"
+		>Resume</ion-button
+	>
+	<ion-button class="ion-margin" color="danger" (click)="progressCircle4.stop()">Stop</ion-button>
+	<ddc-init-progress-circle #progressCircle4 [cssClass]="'mt-2'" [showText]="true">
+	</ddc-init-progress-circle>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressCircle con dot</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressCircle5.start()">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle5.pause()"
+		>Pause</ion-button
+	>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle5.resume()"
+		>Resume</ion-button
+	>
+	<ion-button class="ion-margin" color="danger" (click)="progressCircle5.stop()">Stop</ion-button>
+	<ddc-init-progress-circle #progressCircle5 [cssClass]="'mt-2'" [showText]="true" [showDot]="true">
+	</ddc-init-progress-circle>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressCircle con fillfull</h5>
+	</ion-text>
+	<ion-button class="ion-margin" (click)="progressCircle6.start()">Start</ion-button>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle6.pause()"
+		>Pause</ion-button
+	>
+	<ion-button class="ion-margin" color="warning" (click)="progressCircle6.resume()"
+		>Resume</ion-button
+	>
+	<ion-button class="ion-margin" color="danger" (click)="progressCircle6.stop()">Stop</ion-button>
+	<ddc-init-progress-circle
+		#progressCircle6
+		[cssClass]="'mt-2'"
+		[fillfull]="true"
+		[colorText]="'darkgrey'"
+		[showText]="true"
+	>
+	</ddc-init-progress-circle>
+	<hr />
+
+	<ion-text>
+		<h5>ProgressCircle sizes</h5>
+	</ion-text>
+	<strong>personal 75px</strong>
+	<ddc-init-progress-circle [cssClass]="'mt-2'" [height]="'75px'"> </ddc-init-progress-circle>
+	<strong>xs</strong>
+	<ddc-init-progress-circle [cssClass]="'mt-2'" [size]="'xs'"> </ddc-init-progress-circle>
+	<strong>sm</strong>
+	<ddc-init-progress-circle [cssClass]="'mt-2'" [size]="'sm'"> </ddc-init-progress-circle>
+	<strong>md</strong>
+	<ddc-init-progress-circle [cssClass]="'mt-2'" [size]="'md'"> </ddc-init-progress-circle>
+	<strong>lg</strong>
+	<ddc-init-progress-circle [cssClass]="'mt-2'" [size]="'lg'"> </ddc-init-progress-circle>
+	<strong>xlg</strong>
+	<ddc-init-progress-circle [cssClass]="'mt-2'" [size]="'xlg'"> </ddc-init-progress-circle>
+</ddc-app-accordion>
+
+<ion-button class="ion-margin-top" expand="block" (click)="ddcVarExample.toggle()">
+	DdcCssVarDirective
+</ion-button>
+
+<ddc-app-accordion #ddcVarExample>
+	<div class="ion-margin-top">
+		La direttiva <strong>DdcCssVarDirective</strong> consente di assegnare proprietà di stile con
+		valore una variabile css e viene configuarto con i seguenti parametri di input
+		<ul>
+			<li>
+				<strong>cssVars</strong> Array di oggetti key,value dove key è la proprietà css e value è la
+				variabile da assegnare
+			</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+      ```html
+        &lt;div ddcCssVar [cssVars]="[&#123;key:'background', value:'dark'&#125;, &#123;key:'color', value:'light'&#125;]"&gt;Text for div&lt;/div&gt;
+
+      ```
+
+    </div>
+  </pre>
+
+	<ion-text>
+		<h5>Esempio di settaggio variabili</h5>
+	</ion-text>
+	<div
+		ddcCssVar
+		[cssVars]="[
+			{ key: 'background', value: 'dark' },
+			{ key: 'color', value: 'light' }
+		]"
+	>
+		<span class="ion-margin">Text for div</span>
+	</div>
+	<hr />
+</ddc-app-accordion>

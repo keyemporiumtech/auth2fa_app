@@ -1,0 +1,11 @@
+{
+  "/REST": {
+    "target": "https://okdqaavgx.preview.infomaniak.website",
+    "changeOrigin": true,
+    "secure": false,
+    "pathRewrite": {
+      "^/REST": ""
+    },
+    "logLevel": "debug"
+  }
+}

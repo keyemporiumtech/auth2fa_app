@@ -1,0 +1,41 @@
+<div *ngIf="pages && pages > 1" class="table-paginate">
+	<div class="ion-justify-content-center">
+		<ng-container *ngIf="showMoreLeft">
+			<ion-button size="small" class="pointer" (click)="page(1)">1/...</ion-button>
+		</ng-container>
+
+		<ng-container *ngIf="current > 1">
+			<ion-button size="small" class="pointer" (click)="page(current - 1)">
+				<ion-icon name="chevron-back"></ion-icon>
+			</ion-button>
+		</ng-container>
+
+		<ng-container *ngFor="let i of pagesShow">
+			<ion-button
+				size="small"
+				class="pointer"
+				(click)="page(i)"
+				color="{{ i === current ? 'medium' : '' }}"
+			>
+				{{ i }}
+			</ion-button>
+		</ng-container>
+
+		<ng-container *ngIf="current < pages">
+			<ion-button size="small" class="pointer" (click)="page(current + 1)">
+				<ion-icon name="chevron-forward"></ion-icon>
+			</ion-button>
+		</ng-container>
+
+		<ng-container *ngIf="showMoreRight">
+			<ion-button size="small" class="pointer" (click)="page(pages)">.../{{ pages }}</ion-button>
+		</ng-container>
+	</div>
+</div>
+
+<!--
+<div *ngIf="pages && pages > maxToShow" class="row">
+  <input type="number" class="col-1 form-control" [(ngModel)]="inputSearch" />
+  <a class="btn btn-sm btn-primary text-white ml-2" (click)="search(inputSearch)">{{'APP.BUTTON.PAGE' | translate}}</a>
+</div>
+-->

@@ -1,0 +1,10 @@
+<ion-grid *ngIf="modules && modules.length">
+	<ion-row
+		*ngFor="let el of modules"
+		[style.color]="'var(--light)'"
+		[style.background]="el.version === '0.0.0' ? 'var(--danger)' : 'var(--success)'"
+	>
+		<ion-col size="8">{{ el.module }}</ion-col>
+		<ion-col size="4" class="ion-align-self-center">{{ el.version }}</ion-col>
+	</ion-row>
+</ion-grid>

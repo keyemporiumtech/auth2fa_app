@@ -1,0 +1,13 @@
+<ion-text>
+	<h1>Modulo validator-iban</h1>
+</ion-text>
+
+<ion-list>
+	<ion-item button (click)="set('INPUT_IBAN')">
+		<ion-label>Componente input iban</ion-label>
+	</ion-item>
+</ion-list>
+
+<div *ngIf="view" class="ion-padding-vertical">
+	<wiki-test-input-iban *ngIf="view === 'INPUT_IBAN'"></wiki-test-input-iban>
+</div>

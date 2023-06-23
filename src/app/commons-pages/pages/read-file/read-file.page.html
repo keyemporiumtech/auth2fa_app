@@ -1,0 +1,13 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button (click)="closeFile($event)"></ion-back-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<ddc-app-loading *ngIf="!fileEmbed"></ddc-app-loading>
+	<ddc-app-ki-embed-file *ngIf="fileEmbed" [object]="fileEmbed" (close)="closeFile($event)">
+	</ddc-app-ki-embed-file>
+</ion-content>

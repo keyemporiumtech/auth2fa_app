@@ -1,0 +1,46 @@
+<ion-grid *ngIf="ready">
+	<ion-row>
+		<ion-col size="2">
+			<ion-label>{{ selectMM.label | translate }}</ion-label>
+			<ddc-app-input-select #months [field]="selectMM" [options]="optionMM"> </ddc-app-input-select>
+		</ion-col>
+		<ion-col size="3">
+			<ion-label>{{ selectYY.label | translate }}</ion-label>
+			<ddc-app-input-select #years [field]="selectYY" [options]="optionYY"> </ddc-app-input-select>
+		</ion-col>
+		<ion-col size="3">
+			<ion-label>{{ inputCvc.label | translate }}</ion-label>
+			<ddc-app-input-text [field]="inputCvc"> </ddc-app-input-text>
+		</ion-col>
+	</ion-row>
+
+	<ion-row>
+		<ion-col size="8">
+			<ion-label>{{ inputCC.label | translate }}</ion-label>
+			<!--<ddc-app-loading [loading]="loadingCC"></ddc-app-loading>-->
+			<ddc-app-input-text [field]="inputCC"></ddc-app-input-text>
+			<ddc-app-input-messages
+				*ngIf="messageCC"
+				[errorMessages]="[messageCC]"
+			></ddc-app-input-messages>
+		</ion-col>
+		<ion-col size="4">
+			<!--
+        <ion-label>{{selectTypes.label | translate}}</ion-label>
+        <ng-container *ngIf="!showImage">
+          <ddc-app-input-select #types [id]="id" [field]="selectTypes" [options]="optionTypes">
+          </ddc-app-input-select>
+        </ng-container>
+        <ng-container *ngIf="showImage">
+          <ddc-app-input-select-html #types [id]="id" [field]="selectTypes" [options]="optionTypes">
+          </ddc-app-input-select-html>
+        </ng-container>
+        -->
+			<div
+				*ngIf="textType"
+				[style.margin-top]="'3.2rem'"
+				[innerHTML]="translateKey(textType) | translate : translateParams(textType) | escapehtml"
+			></div>
+		</ion-col>
+	</ion-row>
+</ion-grid>

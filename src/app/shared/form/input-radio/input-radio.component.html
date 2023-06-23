@@ -1,0 +1,35 @@
+<ion-list [ngClass]="cssInput" [ngStyle]="field.cssStyle">
+	<ion-radio-group [value]="field.formControl.value">
+		<ion-list-header *ngIf="headerText">
+			<ion-label
+				[innerHTML]="
+					translateKey(headerText) | translate : translateParams(headerText) | escapehtml
+				"
+			>
+			</ion-label>
+		</ion-list-header>
+
+		<ion-item *ngFor="let option of options; let i = index">
+			<ion-radio
+				labelPlacement="end"
+				[value]="option.key"
+				id="{{ id + '_' + i }}"
+				name="{{ id }}"
+				aria-label="{{
+					translateKey(option.text) | translate : translateParams(option.text) | escapehtml
+				}}"
+				[disabled]="field.formControl.disabled"
+				(ionChange)="selectItem(option)"
+				[innerHtml]="
+					translateKey(option.text) | translate : translateParams(option.text) | escapehtml
+				"
+			></ion-radio>
+		</ion-item>
+	</ion-radio-group>
+</ion-list>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

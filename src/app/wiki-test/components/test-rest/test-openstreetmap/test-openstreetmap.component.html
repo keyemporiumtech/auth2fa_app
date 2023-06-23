@@ -1,0 +1,74 @@
+<ion-text>
+	<h4>Modulo Openstreetmap</h4>
+</ion-text>
+
+<ion-button expand="block" (click)="accordionExample.toggle()"> OpenstreetmapService </ion-button>
+
+<ddc-app-accordion #accordionExample>
+	<div class="ion-margin-top">
+		Il servizio <strong>OpenstreetmapService</strong> viene utilizzato per le chiamate di
+		geolocalizzazione
+		<ul>
+			<li>
+				searchOpenstreetLocationList( term: string, limit: number, excludeids?: string[],
+				extratags?: boolean, language?: string, ):
+				<b>Observable&lt;OpenstreetLocationModel[]&gt;</b> -
+				<i>Cerca una lista di indirizzi utilizzando OpenstreetMap</i>
+			</li>
+			<li>
+				searchOpenstreetLocationUnique( term: string, extratags?: boolean, language?: string, ):
+				<b>Observable&lt;OpenstreetLocation&gt;</b> -
+				<i>Cerca un indirizzo utilizzando OpenstreetMap</i>
+			</li>
+			<li>
+				searchOpenstreetLocations( paramRequest?: OpenstreetRequest, paramSearch?:
+				OpenstreetRequestSearch, paramDetails?: OpenstreetRequestDetails, paramLimit?:
+				OpenstreetRequestLimit, paramPolygon?: OpenstreetRequestPolygon, ):
+				<b>Observable&lt;OpenstreetLocationModel[]&gt;</b> -
+				<i>Cerca una lista di indirizzi utilizzando tutti i parametri OpenstreetMap</i>
+			</li>
+			<li>
+				reverseOpenstreetLocationUnique( latitude: number, longitude: number, extratags?: boolean,
+				language?: string, ): <b>Observable&lt;OpenstreetLocationModel&gt;</b> -
+				<i>Cerca un indirizzo per latitudine e longitudine utilizzando OpenstreetMap</i>
+			</li>
+			<li>
+				reverseOpenstreetLocation( latitude: number, longitude: number, paramRequest?:
+				OpenstreetRequest, paramDetails?: OpenstreetRequestDetails, paramLimit?:
+				OpenstreetRequestLimit, ): <b>Observable&lt;OpenstreetLocationModel&gt;</b> -
+				<i>Cerca un indirizzo per tutti i parametri OpenstreetMap</i>
+			</li>
+		</ul>
+	</div>
+
+	<ion-text>
+		<h5>Esempi di ricerca</h5>
+	</ion-text>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+      ```typescript
+        
+      ```
+    </div>
+  </pre>
+</ddc-app-accordion>
+
+<ion-label position="fixed">Cerca</ion-label>
+<ion-input [(ngModel)]="search"></ion-input>
+<ion-label position="fixed">latitudine</ion-label>
+<ion-input [(ngModel)]="latitude"></ion-input>
+<ion-label position="fixed">longitudine</ion-label>
+<ion-input [(ngModel)]="longitude"></ion-input>
+
+<ion-button (click)="list()">Cerca lista</ion-button>
+<ion-button (click)="unique()">Cerca univoco</ion-button>
+<ion-button (click)="reverse()">Cerca per latitudine e longitudine</ion-button>
+
+<ion-button (click)="list(true)">Cerca lista con extratags</ion-button>
+<ion-button (click)="unique(true)">Cerca univoco con extratags</ion-button>
+<ion-button (click)="reverse(true)">Cerca per latitudine e longitudine con extratags</ion-button>
+
+<div *ngIf="output" class="mt-2">
+	{{ output | json }}
+</div>

@@ -1,0 +1,33 @@
+<wiki-header-wiki [title]="'WIKI'" [flgMenuItems]="flgMenuItems"></wiki-header-wiki>
+<ion-content class="ion-padding">
+	<ion-grid>
+		<h2>Informazioni di sistema</h2>
+		<ion-row class="row mt-2">
+			<ion-col>
+				<dl>
+					<dt>localStorage.getItem('timezoneServer')</dt>
+					<dd>{{ timezoneServer }}</dd>
+					<dt>localStorage.getItem('timezoneNameServer')</dt>
+					<dd>{{ timezoneServerName }}</dd>
+					<dt>applicationStorage.language.get()</dt>
+					<dd>{{ languageCod }}</dd>
+					<dt>applicationStorage.languageName.get()</dt>
+					<dd>{{ languageName }}</dd>
+					<dt>applicationStorage.currency.get()</dt>
+					<dd>{{ currencyCod }}</dd>
+					<dt>applicationStorage.currencyName.get()</dt>
+					<dd>{{ currencyName }}</dd>
+					<dt>applicationStorage.currencySymbol.get()</dt>
+					<dd>{{ currencySymbol }}</dd>
+					<dt>applicationStorage.nation.get()</dt>
+					<dd>{{ nationCod }}</dd>
+					<dt>applicationStorage.nationName.get()</dt>
+					<dd>{{ nationName }}</dd>
+				</dl>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<h2>Versions</h2>
+	<wiki-versioning></wiki-versioning>
+</ion-content>

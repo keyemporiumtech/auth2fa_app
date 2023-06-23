@@ -1,0 +1,538 @@
+<ion-text>
+	<h1>Form Components</h1>
+</ion-text>
+
+<form [formGroup]="form1">
+	<!-- text -->
+	<ion-text color="primary">
+		<h3>Input Text</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(text1.label) | translate : translateParams(text1.label) }}
+	</ion-label>
+	<ddc-app-input-text
+		[field]="text1"
+		[minLength]="2"
+		[automaticValidators]="true"
+	></ddc-app-input-text>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('ciao', 'text1')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('text1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(text1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('text1')">Reset</ion-button>
+	</div>
+
+	<!-- textarea -->
+	<ion-text color="primary">
+		<h3>Input Textarea</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(textarea1.label) | translate : translateParams(textarea1.label) }}
+	</ion-label>
+	<ddc-app-input-textarea [field]="textarea1" [showMinMax]="true" [automaticValidators]="true">
+	</ddc-app-input-textarea>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('ciao', 'textarea1')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('textarea1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(textarea1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('textarea1')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(textarea2.label) | translate : translateParams(textarea2.label) }}
+	</ion-label>
+	<ddc-app-input-textarea
+		[field]="textarea2"
+		[minLength]="2"
+		[maxLength]="100"
+		[showMinMax]="true"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-textarea>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('ciao', 'textarea2')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('textarea2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(textarea2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('textarea2')">Reset</ion-button>
+	</div>
+
+	<!-- select -->
+	<ion-text color="primary">
+		<h3>Input Select</h3>
+	</ion-text>
+	<ion-label for="select1" position="floating"
+		>{{ translateKey(select1.label) | translate : translateParams(select1.label) }}
+	</ion-label>
+	<ddc-app-input-select
+		[id]="'select1'"
+		[field]="select1"
+		[options]="optionList"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-select>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(1, 'select1')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('select1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(select1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('select1')">Reset</ion-button>
+	</div>
+
+	<ion-label for="select2" position="floating"
+		>{{ translateKey(select2.label) | translate : translateParams(select2.label) }}
+	</ion-label>
+	<ddc-app-input-select
+		[id]="'select2'"
+		[field]="select2"
+		[options]="optionList"
+		[multiple]="true"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-select>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue([1, 2], 'select2')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('select2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(select2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('select2')">Reset</ion-button>
+	</div>
+
+	<ion-text color="primary">
+		<h3>Input Select HTML</h3>
+	</ion-text>
+	<ion-label for="select3" position="floating"
+		>{{ translateKey(select3.label) | translate : translateParams(select3.label) }}
+	</ion-label>
+	<ddc-app-input-select-html
+		[id]="'select3'"
+		[field]="select3"
+		[options]="optionListHTML"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-select-html>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(1, 'select3')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('select3')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(select3)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('select3')">Reset</ion-button>
+	</div>
+
+	<ion-label for="select4" position="floating"
+		>{{ translateKey(select4.label) | translate : translateParams(select4.label) }}
+	</ion-label>
+	<ddc-app-input-select-html
+		[id]="'select4'"
+		[field]="select4"
+		[options]="optionListHTML"
+		[multiple]="true"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-select-html>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue([1, 2], 'select4')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('select4')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(select4)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('select4')">Reset</ion-button>
+	</div>
+
+	<!-- checkbox -->
+	<ion-text color="primary">
+		<h3>Input Checkbox</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(checkbox1.label) | translate : translateParams(checkbox1.label) }}
+	</ion-label>
+	<ddc-app-input-checkbox [field]="checkbox1" [options]="optionSingle"></ddc-app-input-checkbox>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(1, 'checkbox1')">Testa Set valore string</ion-button>
+		<ion-button size="small" (click)="setValue(optionItem, 'checkbox1')"
+			>Testa Set valore option</ion-button
+		>
+		<ion-button size="small" (click)="readValue('checkbox1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(checkbox1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('checkbox1')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(checkbox2.label) | translate : translateParams(checkbox2.label) }}
+	</ion-label>
+	<ddc-app-input-checkbox
+		[field]="checkbox2"
+		[options]="optionList"
+		[multiple]="true"
+	></ddc-app-input-checkbox>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue([1, 2], 'checkbox2')"
+			>Testa Set valore string</ion-button
+		>
+		<ion-button size="small" (click)="setValue(optionItem, 'checkbox2')"
+			>Testa Set valore option</ion-button
+		>
+		<ion-button size="small" (click)="readValue('checkbox2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(checkbox2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('checkbox2')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(checkbox3.label) | translate : translateParams(checkbox3.label) }}
+	</ion-label>
+	<ddc-app-input-checkbox [field]="checkbox3" [options]="optionListHTML" [multiple]="true">
+	</ddc-app-input-checkbox>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue([1, 2], 'checkbox3')"
+			>Testa Set valore string</ion-button
+		>
+		<ion-button size="small" (click)="setValue(optionItem, 'checkbox3')"
+			>Testa Set valore option</ion-button
+		>
+		<ion-button size="small" (click)="readValue('checkbox3')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(checkbox3)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('checkbox3')">Reset</ion-button>
+	</div>
+
+	<!-- radio -->
+	<ion-text color="primary">
+		<h3>Input Radio</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(radio1.label) | translate : translateParams(radio1.label) }}
+	</ion-label>
+	<ddc-app-input-radio [field]="radio1" [options]="optionSingle"></ddc-app-input-radio>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(1, 'radio1')">Testa Set valore string</ion-button>
+		<ion-button size="small" (click)="setValue(optionItem, 'radio1')"
+			>Testa Set valore option</ion-button
+		>
+		<ion-button size="small" (click)="readValue('radio1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(radio1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('radio1')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(radio2.label) | translate : translateParams(radio2.label) }}
+	</ion-label>
+	<ddc-app-input-radio [field]="radio2" [options]="optionList"></ddc-app-input-radio>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(2, 'radio2')">Testa Set valore string</ion-button>
+		<ion-button size="small" (click)="setValue(optionItem, 'radio2')"
+			>Testa Set valore option</ion-button
+		>
+		<ion-button size="small" (click)="readValue('radio2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(radio2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('radio2')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(radio3.label) | translate : translateParams(radio3.label) }}
+	</ion-label>
+	<ddc-app-input-radio [field]="radio3" [options]="optionListHTML"></ddc-app-input-radio>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(2, 'radio3')">Testa Set valore string</ion-button>
+		<ion-button size="small" (click)="setValue(optionItem, 'radio3')"
+			>Testa Set valore option</ion-button
+		>
+		<ion-button size="small" (click)="readValue('radio3')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(radio3)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('radio3')">Reset</ion-button>
+	</div>
+
+	<!-- autocomplete -->
+	<ion-text color="primary">
+		<h3>Input Autocomplete</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(autocomplete1.label) | translate : translateParams(autocomplete1.label) }}
+	</ion-label>
+	<ddc-app-input-autocomplete
+		[field]="autocomplete1"
+		[list]="listAutocomplete1"
+		(searchEmit)="searchAutocomplete($event)"
+		(selectEmit)="selectAutocomplete($event)"
+		[digits]="2"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-autocomplete>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('se', 'autocomplete1')"
+			>Testa Set valore string</ion-button
+		>
+		<ion-button size="small" (click)="setValue(optionItem, 'autocomplete1')"
+			>Testa Set valore option</ion-button
+		>
+		<ion-button size="small" (click)="readValue('autocomplete1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(autocomplete1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('autocomplete1')">Reset</ion-button>
+	</div>
+
+	<!-- number -->
+	<ion-text color="primary">
+		<h3>Input Number</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(number1.label) | translate : translateParams(number1.label) }}
+	</ion-label>
+	<ddc-app-input-number
+		[field]="number1"
+		[min]="2"
+		[max]="6"
+		[automaticValidators]="true"
+	></ddc-app-input-number>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(1, 'number1')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('number1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(number1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('number1')">Reset</ion-button>
+	</div>
+
+	<!-- decimal -->
+	<ion-text color="primary">
+		<h3>Input Decimal</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(decimal1.label) | translate : translateParams(decimal1.label) }}
+	</ion-label>
+	<ddc-app-input-decimal
+		[field]="decimal1"
+		[min]="2"
+		[max]="6"
+		[automaticValidators]="true"
+	></ddc-app-input-decimal>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(1, 'decimal1')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('decimal1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(decimal1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('decimal1')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(decimal2.label) | translate : translateParams(decimal2.label) }}
+	</ion-label>
+	<ddc-app-input-decimal
+		[field]="decimal2"
+		[min]="2.15"
+		[max]="6.15"
+		[digits]="2"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-decimal>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(1, 'decimal2')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('decimal2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(decimal2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('decimal2')">Reset</ion-button>
+	</div>
+
+	<!-- currency -->
+	<ion-text color="primary">
+		<h3>Input Currency</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(currency1.label) | translate : translateParams(currency1.label) }}
+	</ion-label>
+	<ddc-app-input-currency
+		[field]="currency1"
+		[min]="2.15"
+		[max]="6.15"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-currency>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue(1, 'currency1')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('currency1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(currency1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('currency1')">Reset</ion-button>
+	</div>
+
+	<!-- date -->
+	<ion-text color="primary">
+		<h3>Input Date</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(date1.label) | translate : translateParams(date1.label) }}
+	</ion-label>
+	<ddc-app-input-date
+		[field]="date1"
+		[min]="'2020-10-30'"
+		[max]="'2021-01-31'"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-date>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('2020-10-22 23:00:27-05:00', 'date1')"
+			>Testa Set valore [2020-10-22 23:00:27-05:00]</ion-button
+		>
+		<ion-button size="small" (click)="readValue('date1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(date1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('date1')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(date2.label) | translate : translateParams(date2.label) }}
+	</ion-label>
+	<ddc-app-input-date
+		[field]="date2"
+		[isTime]="true"
+		[showTimezone]="true"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-date>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('2020-10-22 23:00:27-05:00', 'date2')"
+			>Testa Set valore [2020-10-22 23:00:27-05:00]</ion-button
+		>
+		<ion-button size="small" (click)="readValue('date2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(date2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('date2')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(date3.label) | translate : translateParams(date3.label) }}
+	</ion-label>
+	<ddc-app-input-date
+		[field]="date3"
+		[isTime]="true"
+		[showTimezone]="true"
+		[timezoneName]="'Brazil/Acre'"
+		[automaticValidators]="true"
+	>
+	</ddc-app-input-date>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('2020-10-22 23:00:27-05:00', 'date3')"
+			>Testa Set valore [2020-10-22 23:00:27-05:00]</ion-button
+		>
+		<ion-button size="small" (click)="readValue('date3')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(date3)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('date3')">Reset</ion-button>
+	</div>
+
+	<!-- email -->
+	<ion-text color="primary">
+		<h3>Input Email</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(email1.label) | translate : translateParams(email1.label) }}
+	</ion-label>
+	<ddc-app-input-email [field]="email1"></ddc-app-input-email>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('prova@email.com', 'email1')"
+			>Testa Set valore</ion-button
+		>
+		<ion-button size="small" (click)="readValue('email1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(email1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('email1')">Reset</ion-button>
+	</div>
+
+	<!-- phone -->
+	<ion-text color="primary">
+		<h3>Input Phone</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(phone1.label) | translate : translateParams(phone1.label) }}
+	</ion-label>
+	<ddc-app-input-phone [field]="phone1" [prefixes]="optionsPrefix"> </ddc-app-input-phone>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('+39 3447665432', 'phone1')"
+			>Testa Set valore</ion-button
+		>
+		<ion-button size="small" (click)="readValue('phone1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(phone1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('phone1')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(phone2.label) | translate : translateParams(phone2.label) }}
+	</ion-label>
+	<ddc-app-input-phone [field]="phone2" [prefixes]="optionsPrefixHtml" [dropdownPrefix]="true">
+	</ddc-app-input-phone>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('+39 3447665432', 'phone2')"
+			>Testa Set valore</ion-button
+		>
+		<ion-button size="small" (click)="readValue('phone2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(phone2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('phone2')">Reset</ion-button>
+	</div>
+
+	<!-- file -->
+	<ion-text color="primary">
+		<h3>Input File</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(file1.label) | translate : translateParams(file1.label) }}
+	</ion-label>
+	<ddc-app-input-file [field]="file1"></ddc-app-input-file>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue([embedFile], 'file1')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('file1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(file1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('file1')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(file2.label) | translate : translateParams(file2.label) }}
+	</ion-label>
+	<ddc-app-input-file
+		[field]="file2"
+		[extensions]="'pdf,doc'"
+		[maxSize]="1"
+		[maxSizeUnit]="EnumSizeFormat.MEGABYTE"
+	>
+	</ddc-app-input-file>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue([embedFile], 'file2')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('file2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(file2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('file2')">Reset</ion-button>
+	</div>
+
+	<!-- color -->
+	<ion-text color="primary">
+		<h3>Input Color</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(color1.label) | translate : translateParams(color1.label) }}
+	</ion-label>
+	<ddc-app-input-color [field]="color1"></ddc-app-input-color>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('#000000', 'color1')">Testa Set valore</ion-button>
+		<ion-button size="small" (click)="readValue('color1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(color1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('color1')">Reset</ion-button>
+	</div>
+
+	<!-- password -->
+	<ion-text color="primary">
+		<h3>Input Password</h3>
+	</ion-text>
+	<ion-label position="floating"
+		>{{ translateKey(password1.label) | translate : translateParams(password1.label) }}
+	</ion-label>
+	<ddc-app-input-password [field]="password1"></ddc-app-input-password>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('pass001', 'password1')"
+			>Testa Set valore</ion-button
+		>
+		<ion-button size="small" (click)="readValue('password1')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(password1)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('password1')">Reset</ion-button>
+	</div>
+
+	<ion-label position="floating"
+		>{{ translateKey(password2.label) | translate : translateParams(password2.label) }}
+	</ion-label>
+	<ddc-app-input-password
+		[field]="password2"
+		[minLength]="5"
+		[maxLength]="10"
+		[almostOneLower]="true"
+		[almostOneUpper]="true"
+		[almostOneNumber]="true"
+		[automaticValidators]="true"
+	></ddc-app-input-password>
+	<div class="ion-padding-vertical">
+		<ion-button size="small" (click)="setValue('pass001', 'password2')"
+			>Testa Set valore</ion-button
+		>
+		<ion-button size="small" (click)="readValue('password2')">Testa Read valore</ion-button>
+		<ion-button size="small" (click)="enableDisable(password2)">Abilita/Disabilita</ion-button>
+		<ion-button size="small" (click)="resetValue('password2')">Reset</ion-button>
+	</div>
+</form>

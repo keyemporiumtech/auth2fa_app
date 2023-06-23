@@ -1,0 +1,28 @@
+<ddc-app-loading [loading]="loadingResults"></ddc-app-loading>
+<ddc-app-ki-autocomplete
+	#autocomplete
+	[id]="id"
+	[placeholder]="translateKey(field.placeholder) | translate : translateParams(field.placeholder)"
+	[inputClass]="cssInput"
+	[inputStyle]="field.cssStyle"
+	[icon]="iconClass"
+	[iconColor]="iconColor"
+	[infoClass]="'autocomplete-container'"
+	(searchEmit)="onSearch($event)"
+	(selectEmit)="onSelect($event)"
+	(overEmit)="onOver($event)"
+	(outEmit)="onOut($event)"
+	[maxDigit]="digits"
+	[list]="list"
+	[textNotFound]="textNoRecords"
+	(clearEmit)="onReset()"
+	(cancelEmit)="onReset()"
+>
+	<div input-bottom>
+		<ddc-app-input-messages
+			[supportMessages]="field.supports"
+			[errorMessages]="errorMessages"
+			[validMessages]="validMessages"
+		></ddc-app-input-messages>
+	</div>
+</ddc-app-ki-autocomplete>

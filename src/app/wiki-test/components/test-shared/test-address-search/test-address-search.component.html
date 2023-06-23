@@ -1,0 +1,11 @@
+<ion-text>
+	<h1>Address Search</h1>
+</ion-text>
+
+<form [formGroup]="form">
+	<ddc-app-address-search [id]="'as1'" [field]="autocomplete1" (addressEmit)="keepAddress($event)">
+	</ddc-app-address-search>
+</form>
+
+Ultimo selezionato:<br />
+{{ lastSelected | json }}

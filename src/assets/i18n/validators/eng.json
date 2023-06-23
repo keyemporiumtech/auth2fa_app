@@ -1,0 +1,54 @@
+{
+	"VALIDATION": {
+		"ADDRESS": {
+			"ALMOST_NATION_CITY": "Indicate the country and the city"
+		},
+		"ALMOST_ONE_LOWER": "The field must contain at least one lowercase character",
+		"ALMOST_ONE_UPPER": "The field must contain at least one uppercase character",
+		"ALMOST_ONE_NUMBER": "The field must contain at least one numeric character",
+		"CREDITCARD": "Creditcard not valid",
+		"DATE": {
+			"NOT_VALID": "Invalid date",
+			"DATE_GREATER_OR_EQUAL_THEN": "The date must be greater than or equal to {{ other }}",
+			"DATE_GREATER_THEN": "The date must be greater than {{ other }}",
+			"DATE_GREATER_OR_EQUAL_THEN_CURRENT": "The date must be greater than or equal to the current date",
+			"DATE_GREATER_THEN_CURRENT": "The date must be greater than the current date",
+			"DATE_LESS_OR_EQUAL_THEN": "The date must be less than or equal to {{ other }}",
+			"DATE_LESS_THEN": "The date must be less than {{ other }}",
+			"DATE_LESS_OR_EQUAL_THEN_CURRENT": "The date must be less than or equal to the current date",
+			"DATE_LESS_THEN_CURRENT": "The date must be less than the current date"
+		},
+		"DOUBLE_PRECISION": "Double precision decimal values ​​are allowed",
+		"SPECIFIC_PRECISION": "Only {{ digits }} decimal values ​​after the comma are allowed",
+		"EMAIL": "Invalid email",
+		"IBAN": "Iban not valid",
+		"INTEGER": "Only numbers are allowed",
+		"INVALID": "Invalid value",
+		"MIN_LENGTH": "Field must be more than {{ min }} characters",
+		"MAX_LENGTH": "Field must be less than {{ max }} characters",
+		"MIN_MAX_LENGTH": "The field must be more than {{ min }} characters and less than {{ max }} characters",
+		"NOT_EQUAL": "Field value \"{{ field1 }}\" is different from field value \"{{ field2 }}\"",
+		"NUMBER": {
+			"MAX": "Values ​​greater than {{ max }} are not allowed",
+			"MIN": "Values ​​lower than {{ min }} are not allowed"
+		},
+		"PASSWORD": "Invalid password",
+		"PATTERN": "Pattern {{ pattern }} not respected",
+		"REFERENCE": {
+			"PHONE": "Indicate the telephone number",
+			"PREFIX": "Indicate the area code",
+			"PREFIX_AND_PHONE": "Indicate the area code and telephone number"
+		},
+		"REQUIRED": "Required field",
+		"UPLOAD": {
+			"FILE_EXT": "The {{ filename }} file has the extension {{ fileext }} while only the extensions {{ ext }} are allowed",
+			"FILE_EXT_INFO": "Extensions {{ ext }}",
+			"GENERIC_ERROR": "Upload error",
+			"MAX_SIZE": "The file {{ filename }} has size {{ filesize }} while only files of maximum size {{ size }} {{ unit }} are allowed",
+			"MAX_SIZE_INFO": "Maximum size {{ size }} {{ unit }}",
+			"MAX_NUM_UPLOAD": "They can be attached at most {{ max }} files",
+			"MAX_NUM_UPLOAD_FILE": "Maximum {{ max }} files"
+		},
+		"URL": "Invalid URL (must be prefixed with http:// or https:// or www.)"
+	}
+}

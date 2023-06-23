@@ -1,0 +1,43 @@
+<ion-searchbar
+	id="{{ id }}"
+	showCancelButton="focus"
+	[ngClass]="inputClass"
+	[ngStyle]="inputStyle"
+	placeholder="{{ translateKey(placeholder) | translate : translateParams(placeholder) }}"
+	[formControl]="form.get('text')"
+	debounce="1500"
+	animated
+	(keyup)="onKeyUp($event.target.value)"
+	(ionClear)="onClear()"
+	(ionCancel)="onCancel()"
+>
+</ion-searchbar>
+
+<ion-list *ngIf="list && list.length" [ngClass]="infoClass" [ngStyle]="infoStyle">
+	<ion-item
+		*ngFor="let item of list"
+		class="item"
+		[ngClass]="item.cssClass"
+		[ngStyle]="item.cssStyle"
+		[innerHTML]="translateKey(item.text) | translate : translateParams(item.text)"
+		(click)="onClickItem(item)"
+		(mouseover)="onOverItem(item)"
+		(mouseout)="onOutItem(item)"
+	></ion-item>
+</ion-list>
+
+<ion-list
+	*ngIf="(!list || !list.length) && showNoResult"
+	[ngClass]="infoClass"
+	[ngStyle]="infoStyle"
+>
+	<ion-item
+		class="item item-not-found text-muted"
+		[innerHTML]="
+			translateKey(getTextNotFoundResults()) | translate : translateParams(getTextNotFoundResults())
+		"
+	>
+	</ion-item>
+</ion-list>
+
+<ng-content select="[input-bottom]"></ng-content>

@@ -1,0 +1,11 @@
+{
+  "/REST": {
+    "target": "http://localhost:8889",
+    "changeOrigin": true,
+    "secure": false,
+    "pathRewrite": {
+      "^/REST": ""
+    },
+    "logLevel": "debug"
+  }
+}

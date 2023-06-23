@@ -1,0 +1,201 @@
+<ion-text>
+	<h5>Profili e permessi</h5>
+</ion-text>
+
+<ion-row>
+	<ion-col size="2"> <strong>Utente</strong>: {{ userLogged.username }} </ion-col>
+	<ion-col size="4">
+		<ddc-app-user-profiles></ddc-app-user-profiles>
+	</ion-col>
+	<ion-col size="6">
+		<ion-text>
+			<h6>Permissions</h6>
+		</ion-text>
+		{{ permissions | json }}
+	</ion-col>
+</ion-row>
+
+<hr />
+<ion-text>
+	<h5>Direttiva authenticationPermission</h5>
+</ion-text>
+
+<ion-text>
+	<h5 class="ion-margin-top">Visibilità per profilo</h5>
+</ion-text>
+
+<ion-row>
+	<ion-col size="6">
+		<div class="ion-margin-top" *auth-permissions="{ permissions: ['SUPERVISOR'], hidden: true }">
+			Div Visibile solo per supervisor
+		</div>
+		<div class="ion-margin-top" *auth-permissions="{ permissions: ['PROFILE'], hidden: true }">
+			Div Visibile solo per profile
+		</div>
+		<div class="ion-margin-top" *auth-permissions="{ permissions: ['SUPERVISOR'], disabled: true }">
+			Div Abilitato solo per supervisor e disabilitato altrimenti
+		</div>
+		<div
+			class="ion-margin-top"
+			*auth-permissions="{
+				permissions: ['SUPERVISOR'],
+				styleActive: 'border: 2px blue solid;',
+				styleNA: 'border: 2px red solid;'
+			}"
+		>
+			Div con stile bordo blue per supervisor e rosso altrimenti
+		</div>
+		<div
+			class="ion-margin-top"
+			*auth-permissions="{
+				permissions: ['SUPERVISOR'],
+				classActive: 'div-active',
+				classNA: 'div-not-active'
+			}"
+		>
+			Div con classe active per supervisor e not-active altrimenti
+		</div>
+	</ion-col>
+
+	<ion-col size="6">
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{ permissions: ['SUPERVISOR'], hidden: true }"
+		>
+			BTN supervisor
+		</ion-button>
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{ permissions: ['PROFILE'], hidden: true }"
+		>
+			BTN profile
+		</ion-button>
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{ permissions: ['SUPERVISOR'], disabled: true }"
+		>
+			BTN supervisor able
+		</ion-button>
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{
+				permissions: ['SUPERVISOR'],
+				styleActive: 'border: 2px blue solid;',
+				styleNA: 'border: 2px red solid;'
+			}"
+		>
+			BTN style
+		</ion-button>
+		<ion-button
+			class="ion-margin"
+			*auth-permissions="{
+				permissions: ['SUPERVISOR'],
+				classActive: 'div-active',
+				classNA: 'div-not-active',
+				attributesActive: [{ key: 'color', value: 'dark' }],
+				attributesNA: [{ key: 'color', value: 'danger' }]
+			}"
+		>
+			BTN class
+		</ion-button>
+	</ion-col>
+</ion-row>
+
+<ion-text>
+	<h5 class="ion-margin-top">Visibilità per permessio</h5>
+</ion-text>
+
+<ion-row>
+	<ion-col size="6">
+		<div
+			class="ion-margin-top"
+			*auth-permissions="{ permissions: ['ALL_PERMISSIONS'], hidden: true }"
+		>
+			Div Visibile solo per ALL_PERMISSIONS
+		</div>
+		<div
+			class="ion-margin-top"
+			*auth-permissions="{ permissions: ['OWN_PERMISSIONS'], hidden: true }"
+		>
+			Div Visibile solo per OWN_PERMISSIONS
+		</div>
+		<div
+			class="ion-margin-top"
+			*auth-permissions="{ permissions: ['ALL_PERMISSIONS'], disabled: true }"
+		>
+			Div Abilitato solo per ALL_PERMISSIONS e disabilitato altrimenti
+		</div>
+		<div
+			class="ion-margin-top"
+			*auth-permissions="{
+				permissions: ['ALL_PERMISSIONS'],
+				styleActive: 'border: 2px blue solid;',
+				styleNA: 'border: 2px red solid;'
+			}"
+		>
+			Div con stile bordo blue per ALL_PERMISSIONS e rosso altrimenti
+		</div>
+		<div
+			class="ion-margin-top"
+			*auth-permissions="{
+				permissions: ['ALL_PERMISSIONS'],
+				classActive: 'div-active',
+				classNA: 'div-not-active'
+			}"
+		>
+			Div con classe active per ALL_PERMISSIONS e not-active altrimenti
+		</div>
+	</ion-col>
+
+	<ion-col size="6">
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{ permissions: ['ALL_PERMISSIONS'], hidden: true }"
+		>
+			BTN ALL_PERMISSIONS
+		</ion-button>
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{ permissions: ['OWN_PERMISSIONS'], hidden: true }"
+		>
+			BTN OWN_PERMISSIONS
+		</ion-button>
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{ permissions: ['ALL_PERMISSIONS'], disabled: true }"
+		>
+			BTN ALL_PERMISSIONS able
+		</ion-button>
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{
+				permissions: ['ALL_PERMISSIONS'],
+				styleActive: 'border: 2px blue solid;',
+				styleNA: 'border: 2px red solid;'
+			}"
+		>
+			BTN style
+		</ion-button>
+		<ion-button
+			class="ion-margin"
+			color="dark"
+			*auth-permissions="{
+				permissions: ['ALL_PERMISSIONS'],
+				classActive: 'div-active',
+				classNA: 'div-not-active',
+				attributesActive: [{ key: 'color', value: 'dark' }],
+				attributesNA: [{ key: 'color', value: 'danger' }]
+			}"
+		>
+			BTN class
+		</ion-button>
+	</ion-col>
+</ion-row>

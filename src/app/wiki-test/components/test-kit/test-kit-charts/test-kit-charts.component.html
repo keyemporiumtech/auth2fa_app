@@ -1,0 +1,957 @@
+<ion-text>
+	<h4>Modulo Charts</h4>
+</ion-text>
+
+<ion-button expand="block" (click)="collapseChartExample.toggle()">
+	ChartComponent - Examples
+</ion-button>
+<ion-button expand="block" (click)="collapseChartExampleCurrency.toggle()">
+	ChartComponent - Examples with Currency
+</ion-button>
+<ion-button expand="block" (click)="collapseChartExampleTemplate.toggle()">
+	ChartComponent - Examples with Tooltip Template
+</ion-button>
+
+<ddc-app-accordion #collapseChartExample>
+	<div class="ion-margin-top">
+		Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a barre
+		verticali. I parametri necessari sono:
+		<ul>
+			<li>
+				<strong>data: ChartElementInterface[] | ChartElementGroupInterface[]</strong> gli elementi
+				da visualizzare in grafico
+			</li>
+			<li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
+			<li><strong>height</strong> l'altezza del container (default 400px)</li>
+			<li>
+				<strong>options.ColorScheme: ChartColorSchemaInterface</strong> definisce i colori da usare
+				nelle barre
+			</li>
+			<li>
+				<strong>options.ColorSchemeName: string</strong> definisce i colori da usare secondo il set
+				a disposizione dal component
+			</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+      ```typescript
+          this.dataVB = [
+            &#123;
+              name: 'Pen',
+              value: 30,
+            &#125;,
+            &#123;
+              name: 'Book',
+              value: 50,
+            &#125;,
+            &#123;
+              name: 'Table',
+              value: 350,
+            &#125;,
+          ];
+
+          this.optVB = &#123;&#125;;
+
+          this.dataVBColor = [
+            &#123;
+              name: 'Pen',
+              value: 30,
+              color: '#000000',
+            &#125;,
+            &#123;
+              name: 'Book',
+              value: 50,
+              color: '#777777',
+            &#125;,
+            &#123;
+              name: 'Table',
+              value: 350,
+              color: '#FF5733',
+            &#125;,
+          ];
+
+          this.optVBScheme = &#123;&#125;;
+          this.optVBScheme.colorSchemeName = 'nightLights';
+
+
+        ```
+
+        ```html
+          &lt;ddc-init-chart
+            [data]="dataVB"
+            [options]="optVB"
+            [typeChart]="chartType.VERTICAL_BAR"
+            [xAxisLabel]="'Products'"
+            [legendTitle]="'Product Sale Chart'"
+            [yAxisLabel]="'Sale'"
+          &gt;&lt;/ddc-init-chart&gt;
+
+          &lt;ddc-init-chart
+            [data]="dataVBColor"
+            [options]="optVB"
+            [typeChart]="chartType.VERTICAL_BAR"
+            [xAxisLabel]="'Products'"
+            [legendTitle]="'Product Sale Chart'"
+            [yAxisLabel]="'Sale'"
+          &gt;&lt;/ddc-init-chart&gt;
+
+          &lt;ddc-init-chart
+            [data]="dataVB"
+            [options]="optVBScheme"
+            [typeChart]="chartType.VERTICAL_BAR"
+            [xAxisLabel]="'Products'"
+            [legendTitle]="'Product Sale Chart'"
+            [yAxisLabel]="'Sale'"
+          &gt;&lt;/ddc-init-chart&gt;
+
+        ```
+
+    </div>
+  </pre>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size="4">
+				<ion-text>
+					<h5>Vertical Bar semplice</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB1"
+					[typeChart]="chartType.VERTICAL_BAR"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="4">
+				<ion-text>
+					<h5>Vertical Bar con colori personalizzati</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBColor"
+					[options]="optVB2"
+					[typeChart]="chartType.VERTICAL_BAR"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="4">
+				<ion-text>
+					<h5>Vertical Bar con colori settati da options</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVBScheme"
+					[typeChart]="chartType.VERTICAL_BAR"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ddc-app-accordion>
+
+<!-- EXAMPLES CURRENCY -->
+<ddc-app-accordion #collapseChartExampleCurrency>
+	<div class="ion-margin-top">
+		Se si vuole mostrare i valori uniti al currency, i parametri sono
+		<ul>
+			<li><strong>showCurrencySymbol: boolean</strong> da settare a true</li>
+			<li>
+				<strong>currencySymbol: string</strong> se si vuole un currency specifico, altrimenti si
+				imposta quello di sistema
+			</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+      ```html
+        &lt;ddc-init-chart
+          [data]="dataVB"
+          [options]="optVB"
+          [typeChart]="chartType.VERTICAL_BAR"
+          [xAxisLabel]="'Products'"
+          [legendTitle]="'Product Sale Chart'"
+          [yAxisLabel]="'Sale'"
+          [showCurrencySymbol]="true"
+        &gt;&lt;/ddc-init-chart&gt;
+
+        &lt;ddc-init-chart
+          [data]="dataVB"
+          [options]="optVB"
+          [typeChart]="chartType.VERTICAL_BAR"
+          [xAxisLabel]="'Products'"
+          [legendTitle]="'Product Sale Chart'"
+          [yAxisLabel]="'Sale'"
+          [showCurrencySymbol]="true"
+          [currencySymbol]="'$'"
+        &gt;&lt;/ddc-init-chart&gt;
+
+      ```
+
+    </div>
+  </pre>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Currency System - Vertical bar</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBCurrency"
+					[options]="optVBCurrency"
+					[typeChart]="chartType.VERTICAL_BAR"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+					[showCurrencySymbol]="true"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Currency $ - Vertical bar</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBCurrency"
+					[options]="optVBCurrency"
+					[typeChart]="chartType.VERTICAL_BAR"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+					[showCurrencySymbol]="true"
+					[currencySymbol]="'$'"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Currency System - Vertical bar grouped</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBCurrencyGroup"
+					[options]="optVBCurrency"
+					[typeChart]="chartType.VERTICAL_BAR_GROUPED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+					[showCurrencySymbol]="true"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Currency $ - Vertical bar grouped</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBCurrencyGroup"
+					[options]="optVBCurrency"
+					[typeChart]="chartType.VERTICAL_BAR_GROUPED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+					[showCurrencySymbol]="true"
+					[currencySymbol]="'$'"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Currency System - PIE</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBCurrency"
+					[options]="optVBCurrency"
+					[typeChart]="chartType.PIE"
+					[legendTitle]="'Product Sale Chart'"
+					[showCurrencySymbol]="true"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Currency $ - PIE</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBCurrency"
+					[options]="optVBCurrency"
+					[typeChart]="chartType.PIE"
+					[legendTitle]="'Product Sale Chart'"
+					[showCurrencySymbol]="true"
+					[currencySymbol]="'$'"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Currency System - PIE ADVANCED</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBCurrency"
+					[options]="optVBCurrency"
+					[typeChart]="chartType.PIE_ADVANCED"
+					[legendTitle]="'Product Sale Chart'"
+					[showCurrencySymbol]="true"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Currency System - PIE GRID</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBCurrency"
+					[options]="optVBCurrency"
+					[typeChart]="chartType.PIE_GRID"
+					[legendTitle]="'Product Sale Chart'"
+					[showCurrencySymbol]="true"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ddc-app-accordion>
+
+<!-- EXAMPLES TOOLTIP TEMPLATE -->
+<ddc-app-accordion #collapseChartExampleTemplate>
+	<div class="ion-margin-top">
+		Se si vuole mostrare un tooltip personalizzato bisogna passare un template
+		<ul>
+			<li><strong>tooltipContent: any</strong> template da sostituire per il tooltip</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+      ```htm
+        &lt;ddc-init-chart
+          [data]="dataVB"
+          [options]="optVB"
+          [typeChart]="chartType.VERTICAL_BAR"
+          [xAxisLabel]="'Products'"
+          [legendTitle]="'Product Sale Chart'"
+          [yAxisLabel]="'Sale'"
+          [showCurrencySymbol]="true"
+          [currencySymbol]="'$'"
+        &gt;&lt;/ddc-init-chart&gt;
+        &lt;ng-template
+          #myTemplate1
+          let-model="model"
+        &gt;
+          &lt;h5 [style.color]="'yellow'"&gt;&#123;&#123;model.name&#125;&#125;&lt;/h5&gt;
+          &lt;span [style.color]="'green'"&gt;&#123;&#123;model.value&#125;&#125;&lt;/span&gt;
+        &lt;/ng-template&gt;
+      ```
+
+    </div>
+  </pre>
+
+	<ng-template #myTemplate1 let-model="model">
+		<h5 [style.color]="'yellow'">{{ model.name }}</h5>
+		<span [style.color]="'green'">{{ model.value }}</span>
+	</ng-template>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size="4">
+				<ion-text>
+					<h5>Personal template tooltip - Vertical Bar</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.VERTICAL_BAR"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+					[tooltipContent]="myTemplate1"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="4">
+				<ion-text>
+					<h5>Personal template tooltip - Vertical Bar Grouped</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBGroup"
+					[options]="optVB"
+					[typeChart]="chartType.VERTICAL_BAR_GROUPED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+					[tooltipContent]="myTemplate1"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="4">
+				<ion-text>
+					<h5>Personal template tooltip - PIE</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.PIE"
+					[legendTitle]="'Product Sale Chart'"
+					[tooltipContent]="myTemplate1"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ddc-app-accordion>
+
+<!-- TEMPLATES -->
+<hr class="line line-lg bg-info" />
+<ion-button expand="block" (click)="collapseChartTemplate.toggle()">
+	ChartComponent - Tutti i template
+</ion-button>
+
+<ddc-app-accordion #collapseChartTemplate>
+	<div class="ion-margin-top">
+		Il componente <strong>ChartComponent</strong> mette a disposizione i seguenti template di color
+		set
+	</div>
+
+	TODO
+	<!--
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-text>
+          <h5>Personal template tooltip - Vertical Bar</h5>
+        </ion-text>
+        <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.VERTICAL_BAR" [xAxisLabel]="'Products'"
+          [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'" [tooltipContent]="myTemplate1"></ddc-init-chart>
+      </ion-col>
+      <ion-col size="4">
+        <ion-text>
+          <h5>Personal template tooltip - Vertical Bar Grouped</h5>
+        </ion-text>
+        <ddc-init-chart [data]="dataVBGroup" [options]="optVB" [typeChart]="chartType.VERTICAL_BAR_GROUPED"
+          [xAxisLabel]="'Products'" [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"
+          [tooltipContent]="myTemplate1"></ddc-init-chart>
+      </ion-col>
+      <ion-col size="4">
+        <ion-text>
+          <h5>Personal template tooltip - PIE</h5>
+        </ion-text>
+        <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE"
+          [legendTitle]="'Product Sale Chart'" [tooltipContent]="myTemplate1"></ddc-init-chart>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+-->
+</ddc-app-accordion>
+
+<!-- VERTICAL BAR -->
+<hr class="line line-lg bg-info" />
+<ion-button expand="block" (click)="collapseChartVerticalBar.toggle()">
+	ChartComponent - Vertical and Horizontal
+</ion-button>
+
+<ddc-app-accordion #collapseChartVerticalBar>
+	<div class="ion-margin-top">
+		Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a barre
+		verticali.<br />
+		I tipi <strong>VERTICAL_BAR</strong> e <strong>HORIZONTAL_BAR</strong> sono usati per elementi
+		<strong>ChartElementInterface</strong><br />
+		I tipi <strong>VERTICAL_BAR_GROUPED</strong>, <strong>HORIZONTAL_BAR_GROUPED</strong>,
+		<strong>VERTICAL_BAR_STACKED</strong>, <strong>HORIZONTAL_BAR_STACKE</strong>,
+		<strong>VERTICAL_BAR_NORMALIZED</strong> e <strong>HORIZONTAL_BAR_NORMALIZED</strong> sono usati
+		per elementi <strong>ChartElementGroupInterface</strong><br /><br />
+
+		I parametri da usare sono
+		<ul>
+			<li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+
+      ```typescript
+        this.dataVB = [
+          &#123;
+            name: 'Pen',
+            value: 30,
+          &#125;,
+          &#123;
+            name: 'Book',
+            value: 50,
+          &#125;,
+          &#123;
+            name: 'Table',
+            value: 350,
+          &#125;,
+        ];
+
+        this.dataVBGroup = [
+          &#123;
+            name: 'Gruop1',
+            series: [
+              &#123;
+                name: 'Pen',
+                value: 30,
+              &#125;,
+              &#123;
+                name: 'Book',
+                value: 50,
+              &#125;,
+              &#123;
+                name: 'Table',
+                value: 350,
+              &#125;,
+            ],
+          &#125;,
+          &#123;
+            name: 'Gruop2',
+            series: [
+              &#123;
+                name: 'Sky',
+                value: 300,
+              &#125;,
+              &#123;
+                name: 'Dazn',
+                value: 150,
+              &#125;,
+            ],
+          &#125;,
+        ];
+      &#125;
+      ```
+
+      ```html
+        &lt;ddc-init-chart
+          [data]="dataVB"
+          [options]="optVB"
+          [typeChart]="chartType.VERTICAL_BAR"
+          [xAxisLabel]="'Products'"
+          [legendTitle]="'Product Sale Chart'"
+          [yAxisLabel]="'Sale'"
+        &gt;&lt;/ddc-init-chart&gt;
+
+        &lt;ddc-init-chart
+          [data]="dataVBGroup"
+          [options]="optVB"
+          [typeChart]="chartType.VERTICAL_BAR_GROUPED"
+          [xAxisLabel]="'Products'"
+          [legendTitle]="'Product Sale Chart'"
+          [yAxisLabel]="'Sale'"
+        &gt;&lt;/ddc-init-chart&gt;
+      ```
+
+    </div>
+  </pre>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Vertical Bar semplice</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.VERTICAL_BAR"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Horizontal Bar semplice</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.HORIZONTAL_BAR"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Vertical Bar 2D</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBGroup"
+					[options]="optVB"
+					[typeChart]="chartType.VERTICAL_BAR_GROUPED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Horizontal Bar 2D</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBGroup"
+					[options]="optVB"
+					[typeChart]="chartType.HORIZONTAL_BAR_GROUPED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Vertical Bar Stacked</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBGroup"
+					[options]="optVB"
+					[typeChart]="chartType.VERTICAL_BAR_STACKED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Horizontal Bar Stacked</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBGroup"
+					[options]="optVB"
+					[typeChart]="chartType.HORIZONTAL_BAR_STACKED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Vertical Bar Normalized</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBGroup"
+					[options]="optVB"
+					[typeChart]="chartType.VERTICAL_BAR_NORMALIZED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>Horizontal Bar Stacked</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBGroup"
+					[options]="optVB"
+					[typeChart]="chartType.HORIZONTAL_BAR_NORMALIZED"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ddc-app-accordion>
+
+<!-- PIE -->
+<hr class="line line-lg bg-info" />
+<ion-button expand="block" (click)="collapseChartPie.toggle()"> ChartComponent - PIE </ion-button>
+
+<ddc-app-accordion #collapseChartPie>
+	<div class="ion-margin-top">
+		Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a torta.<br />
+		I tipi sono <strong>PIE</strong>, <strong>PIE_ADVANCED</strong> e <strong>PIE_GRID</strong
+		><br /><br />
+
+		I parametri da usare per PIE sono
+		<ul>
+			<li><strong>legendTitle</strong> per la label da visualizzare in leggenda</li>
+			<li><strong>showLabels: boolean</strong>indica se mostrare le label sui pezzi</li>
+			<li>
+				<strong>explodeSlices: boolean</strong>se a true ridimensiona i pezzi di torta in base al
+				valore
+			</li>
+			<li><strong>doughnut: boolean</strong>se a true mostra la torta a ciambella</li>
+		</ul>
+
+		mentre per PIE_ADVANCED e PIE_GRID non sono necessari
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+
+      ```typescript
+        this.dataVB = [
+          &#123;
+            name: 'Pen',
+            value: 30,
+          &#125;,
+          &#123;
+            name: 'Book',
+            value: 50,
+          &#125;,
+          &#123;
+            name: 'Table',
+            value: 350,
+          &#125;,
+        ];
+      ```
+
+      ```html
+        &lt;ddc-init-chart
+          [data]="dataVB"
+          [options]="optVB"
+          [typeChart]="chartType.PIE"
+          [legendTitle]="'Product Sale Chart'"
+        &gt;&lt;/ddc-init-chart&gt;
+
+      ```
+
+    </div>
+  </pre>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size="4">
+				<ion-text>
+					<h5>PIE semplice</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.PIE"
+					[legendTitle]="'Product Sale'"
+				>
+				</ddc-init-chart>
+			</ion-col>
+			<ion-col size="4">
+				<ion-text>
+					<h5>PIE semplice - explodeSlices a true</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.PIE"
+					[legendTitle]="'Product Sale'"
+					[explodeSlices]="true"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="4">
+				<ion-text>
+					<h5>PIE semplice - doughnut a true</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.PIE"
+					[legendTitle]="'Product Sale'"
+					[doughnut]="true"
+				></ddc-init-chart>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-text>
+					<h5>PIE_ADVANCED</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.PIE_ADVANCED"
+					[legendTitle]="'Product Sale'"
+				></ddc-init-chart>
+			</ion-col>
+			<ion-col size="6">
+				<ion-text>
+					<h5>PIE_GRID</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVB"
+					[options]="optVB"
+					[typeChart]="chartType.PIE_GRID"
+					[legendTitle]="'Product Sale'"
+				>
+				</ddc-init-chart>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ddc-app-accordion>
+
+<!-- LINE -->
+<hr class="line line-lg bg-info" />
+<ion-button expand="block" (click)="collapseChartLine.toggle()"> ChartComponent - LINE </ion-button>
+
+<ion-button expand="block" (click)="collapseChartLineCurves.toggle()">
+	ChartComponent - LINE Curves
+</ion-button>
+
+<ddc-app-accordion #collapseChartLine>
+	<div class="ion-margin-top">
+		Il componente <strong>ChartComponent</strong> permette la visualizzazione di grafici a linee.<br />
+
+		I parametri da usare per LINE sono
+		<ul>
+			<li>
+				<strong>data: ChartElementInterface[] | ChartElementGroupInterface[]</strong> gli elementi
+				da visualizzare in grafico
+			</li>
+			<li><strong>legendTitle, xAxisLabel e yAxisLabel</strong> per le label da visualizzare</li>
+			<li><strong>height</strong> l'altezza del container (default 400px)</li>
+			<li>
+				<strong>options.ColorScheme: ChartColorSchemaInterface</strong> definisce i colori da usare
+				nelle barre
+			</li>
+			<li>
+				<strong>options.ColorSchemeName: string</strong> definisce i colori da usare secondo il set
+				a disposizione dal component
+			</li>
+			<li><strong>options.curveType: string</strong> definisce il tipo di curvatura</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+
+      ```typescript
+          this.dataVBGroup = [
+            &#123;
+              name: 'Gruop1',
+              series: [
+                &#123;
+                  name: 'Pen',
+                  value: 30,
+                &#125;,
+                &#123;
+                  name: 'Book',
+                  value: 50,
+                &#125;,
+                &#123;
+                  name: 'Table',
+                  value: 350,
+                &#125;,
+              ],
+            &#125;,
+            &#123;
+              name: 'Gruop2',
+              series: [
+                &#123;
+                  name: 'Sky',
+                  value: 300,
+                &#125;,
+                &#123;
+                  name: 'Dazn',
+                  value: 150,
+                &#125;,
+              ],
+            &#125;,
+          ];
+        &#125;
+        ```
+
+        ```html
+          &lt;ddc-init-chart
+            [data]="dataVBGroup"
+            [options]="optVB"
+            [typeChart]="chartType.LINE"
+            [xAxisLabel]="'Products'"
+            [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"
+          &gt;&lt;/ddc-init-chart&gt;
+
+        ```
+
+    </div>
+  </pre>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size="12">
+				<ion-text>
+					<h5>LINE semplice - Linear curve</h5>
+				</ion-text>
+				<ddc-init-chart
+					[data]="dataVBGroup"
+					[options]="optVB"
+					[typeChart]="chartType.LINE"
+					[xAxisLabel]="'Products'"
+					[legendTitle]="'Product Sale Chart'"
+					[yAxisLabel]="'Sale'"
+				>
+				</ddc-init-chart>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ddc-app-accordion>
+
+<ddc-app-accordion #collapseChartLineCurves>
+	<div class="ion-margin-top">
+		I parametri da usare per LINE sono
+		<ul>
+			<li><strong>options.curveType: string</strong> definisce il tipo di curvatura</li>
+		</ul>
+	</div>
+
+	<pre>
+    <div markdown ngPreserveWhitespaces ngNonBindable>
+
+
+      ```typescript
+          this.optVB.curveType = '...'
+        ```
+
+        ```html
+          &lt;ddc-init-chart
+            [data]="dataVBGroup"
+            [options]="optVB"
+            [typeChart]="chartType.LINE"
+            [xAxisLabel]="'Products'"
+            [legendTitle]="'Product Sale Chart'" [yAxisLabel]="'Sale'"
+          &gt;&lt;/ddc-init-chart&gt;
+
+        ```
+
+    </div>
+  </pre>
+
+	TODO
+	<!--
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-text>
+          <h5>PIE_ADVANCED</h5>
+        </ion-text>
+        <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE_ADVANCED"
+        [legendTitle]="'Product Sale'"></ddc-init-chart>
+      </ion-col>
+      <ion-col size="4">
+        <ion-text>
+          <h5>PIE_GRID</h5>
+        </ion-text>
+        <ddc-init-chart [data]="dataVB" [options]="optVB" [typeChart]="chartType.PIE_GRID" [legendTitle]="'Product Sale'">
+        </ddc-init-chart>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  -->
+</ddc-app-accordion>

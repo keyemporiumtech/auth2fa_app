@@ -1,0 +1,21 @@
+<ion-input
+	[id]="id"
+	type="number"
+	[ngClass]="cssInput"
+	[ngStyle]="field.cssStyle"
+	placeholder="{{
+		translateKey(field.placeholder) | translate : translateParams(field.placeholder)
+	}}"
+	[formControl]="field.formControl"
+	[min]="min"
+	[max]="max"
+	[step]="step"
+	[pattern]="pattern"
+>
+</ion-input>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

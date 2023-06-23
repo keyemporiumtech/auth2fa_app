@@ -1,0 +1,105 @@
+<ddc-app-loading [loading]="loading"></ddc-app-loading>
+<ion-label *ngIf="labelTitle" position="floating">
+	{{ translateKey(labelTitle) | translate : translateParams(labelTitle) }}
+</ion-label>
+
+<ion-grid>
+	<ion-row *ngIf="tpaddressFlag" class="ion-margin-top">
+		<ion-col size="12">
+			<ion-label *ngIf="labelTitle" position="floating">{{
+				'APP.LABEL.ADDRESS.TYPE' | translate
+			}}</ion-label>
+			<ddc-app-input-select
+				#tpaddressComponent
+				[field]="tpAddressFormField"
+				[options]="optionsTpaddress"
+			>
+			</ddc-app-input-select>
+		</ion-col>
+	</ion-row>
+
+	<ddc-app-input-autocomplete
+		*ngIf="!readonly && flgAutocomplete"
+		[field]="autocompleteFormField"
+		[list]="listForAutocomplete"
+		(searchEmit)="searchAutocomplete($event)"
+		(overEmit)="mouseOverAutocomplete($event)"
+		(outEmit)="mouseOutAutocomplete($event)"
+		(selectEmit)="clickAutocomplete($event)"
+	>
+	</ddc-app-input-autocomplete>
+
+	<ddc-app-address-search
+		*ngIf="!readonly && flgSearch"
+		[field]="searchFormField"
+		[flgEsri]="true"
+		(addressEmit)="addressByOpenstreet($event)"
+	>
+	</ddc-app-address-search>
+
+	<ion-row class="ion-margin-top">
+		<ion-col size="4">
+			<ion-label position="floating">{{ 'APP.LABEL.ADDRESS.NATION' | translate }}</ion-label>
+			<ddc-app-input-select [field]="nationFormField" [options]="nationOptions">
+			</ddc-app-input-select>
+		</ion-col>
+		<ion-col size="4">
+			<ion-label position="floating">{{ 'APP.LABEL.ADDRESS.REGION' | translate }}</ion-label>
+			<ddc-app-input-select [field]="regionFormField" [options]="regionOptions">
+			</ddc-app-input-select>
+		</ion-col>
+		<ion-col size="4">
+			<ion-label position="floating">{{ 'APP.LABEL.ADDRESS.PROVINCE' | translate }}</ion-label>
+			<ddc-app-input-select [field]="provinceFormField" [options]="provinceOptions">
+			</ddc-app-input-select>
+		</ion-col>
+	</ion-row>
+
+	<ion-row class="ion-margin-top">
+		<ion-col size="4" *ngIf="isCommunity()">
+			<ion-label position="floating">{{ 'APP.LABEL.ADDRESS.COMMUNITY' | translate }}</ion-label>
+			<ddc-app-input-select [field]="communityFormField" [options]="communityOptions">
+			</ddc-app-input-select>
+		</ion-col>
+		<ion-col size="4">
+			<ion-label position="floating">{{ 'APP.LABEL.ADDRESS.CITY' | translate }}</ion-label>
+			<ddc-app-input-select [field]="cityFormField" [options]="cityOptions"> </ddc-app-input-select>
+		</ion-col>
+		<ion-col size="3">
+			<ion-label position="floating">{{ 'APP.LABEL.ADDRESS.ZIP' | translate }}</ion-label>
+			<ddc-app-input-text [field]="zipFormField"> </ddc-app-input-text>
+		</ion-col>
+	</ion-row>
+
+	<ion-row class="ion-margin-top" *ngIf="fieldStreet && fieldNum">
+		<ion-col size="9">
+			<ion-label position="floating">{{ 'APP.LABEL.ADDRESS.STREET' | translate }}</ion-label>
+			<ddc-app-input-text
+				#streetComponent
+				[field]="streetFormField"
+				[events]="['blur']"
+				(blurEvent)="blurStreet($event)"
+			>
+			</ddc-app-input-text>
+		</ion-col>
+		<ion-col size="3">
+			<ion-label position="floating">{{ 'APP.LABEL.ADDRESS.NUM' | translate }}</ion-label>
+			<ddc-app-input-text
+				#numComponent
+				[field]="numFormField"
+				[events]="['blur']"
+				(blurEvent)="blurNum($event)"
+			>
+			</ddc-app-input-text>
+		</ion-col>
+	</ion-row>
+</ion-grid>
+
+<ddc-app-map
+	*ngIf="flgMap"
+	[id]="'map_' + id"
+	[showEnableDisableScroll]="false"
+	[latitude]="mapGeo1"
+	[longitude]="mapGeo2"
+	[textMarker]="mapAddressText"
+></ddc-app-map>

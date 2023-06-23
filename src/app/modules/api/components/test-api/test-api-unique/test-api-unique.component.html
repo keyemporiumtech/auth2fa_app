@@ -1,0 +1,15 @@
+<ddc-app-form-page [form]="form" [flgOnInitValidation]="true" [groups]="groups"></ddc-app-form-page>
+
+<div class="ion-padding">
+	<ion-button class="ion-margin" color="dark" (click)="changeMode(formMode.UPDATE)">
+		<ion-icon name="create" item-start></ion-icon>
+	</ion-button>
+	<ion-button class="ion-margin" color="dark" (click)="changeMode(formMode.DETAIL)">
+		<ion-icon name="eye" item-start></ion-icon>
+	</ion-button>
+	<ion-button class="ion-margin" color="dark" [disabled]="!form.valid" (click)="save()">
+		<ion-icon name="save" item-start></ion-icon>
+	</ion-button>
+</div>
+
+<div *ngIf="modelToSave" class="ion-padding-vertical">{{ modelToSave | json }}</div>

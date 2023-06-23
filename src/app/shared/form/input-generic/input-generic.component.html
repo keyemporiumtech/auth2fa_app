@@ -1,0 +1,179 @@
+<ng-container *ngIf="field" [ngSwitch]="field.type">
+	<ion-label *ngIf="field.label" [attr.for]="id" [attr.size]="field.sizeLabel" position="floating">
+		{{ translateKey(field.label) | translate : translateParams(field.label) }}
+	</ion-label>
+	<!--INPUTS-->
+
+	<ddc-app-input-text
+		*ngSwitchCase="EnumFormType.TEXT"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[minLength]="minLength"
+		[maxLength]="maxLength"
+	></ddc-app-input-text>
+
+	<ddc-app-input-textarea
+		*ngSwitchCase="EnumFormType.TEXTAREA"
+		[id]="id"
+		[minLength]="minLength"
+		[maxLength]="maxLength"
+		[field]="field"
+		[showMinMax]="showMinMax"
+		[automaticValidators]="automaticValidators"
+	>
+	</ddc-app-input-textarea>
+
+	<ddc-app-input-number
+		*ngSwitchCase="EnumFormType.NUMBER"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[min]="min"
+		[max]="max"
+	>
+	</ddc-app-input-number>
+
+	<ddc-app-input-decimal
+		*ngSwitchCase="EnumFormType.DECIMAL"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[min]="min"
+		[max]="max"
+		[digits]="digits"
+		[step]="step ? step.toString() : undefined"
+	>
+	</ddc-app-input-decimal>
+
+	<ddc-app-input-currency
+		*ngSwitchCase="EnumFormType.CURRENCY"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[min]="min"
+		[max]="max"
+		[digits]="digits"
+		[step]="step ? step.toString() : undefined"
+		[currencySymbol]="currencySymbol"
+	>
+	</ddc-app-input-currency>
+
+	<ddc-app-input-select
+		*ngSwitchCase="EnumFormType.SELECT"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[options]="options"
+		[defaultOption]="defaultOption"
+		[defaultOptionText]="defaultOptionText"
+		[multiple]="multiple"
+	>
+	</ddc-app-input-select>
+
+	<ddc-app-input-select-html
+		*ngSwitchCase="EnumFormType.SELECT_DIV"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[options]="options"
+		[defaultOption]="defaultOption"
+		[defaultOptionText]="defaultOptionText"
+		[multiple]="multiple"
+	>
+	</ddc-app-input-select-html>
+
+	<ddc-app-input-checkbox
+		*ngSwitchCase="EnumFormType.CHECKBOX"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[options]="options"
+		[defaultOption]="defaultOption"
+		[defaultOptionText]="defaultOptionText"
+		[multiple]="multiple"
+		[isHorizontal]="isHorizontal"
+	>
+	</ddc-app-input-checkbox>
+
+	<ddc-app-input-radio
+		*ngSwitchCase="EnumFormType.RADIO"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[options]="options"
+		[isHorizontal]="isHorizontal"
+	>
+	</ddc-app-input-radio>
+
+	<ddc-app-input-date
+		*ngSwitchCase="EnumFormType.DATE"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[min]="min"
+		[max]="max"
+		[step]="step ? +step : undefined"
+		[timezoneName]="timezoneName"
+		[isTime]="isTime"
+		[displayFormat]="displayFormat"
+		[showTimezone]="showTimezone"
+	>
+	</ddc-app-input-date>
+
+	<ddc-app-input-file
+		*ngSwitchCase="EnumFormType.FILE"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[multiple]="multiple"
+		[maxSize]="maxSize"
+		[maxSizeUnit]="maxSizeUnit"
+		[extensions]="extensions"
+		[numMaxFiles]="numMaxFiles"
+	>
+	</ddc-app-input-file>
+
+	<ddc-app-input-autocomplete
+		*ngSwitchCase="EnumFormType.SEARCH"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[digits]="digits"
+		[textNoRecords]="textNoRecords"
+		[list]="list"
+		[search]="search"
+		(searchEmit)="onSearch($event)"
+		(selectEmit)="onSelect($event)"
+		(overEmit)="onOver($event)"
+		(outEmit)="onOut($event)"
+	>
+	</ddc-app-input-autocomplete>
+
+	<ddc-app-input-phone
+		*ngSwitchCase="EnumFormType.PHONE"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+		[prefixes]="prefixes"
+		[defaultPrefixText]="defaultPrefixText"
+		[dropdownPrefix]="dropdownPrefix"
+		[cssDropdownClass]="cssDropdownClass"
+		[cssDropdownStyle]="cssDropdownStyle"
+		[cssDropdownButtonClass]="cssDropdownButtonClass"
+	></ddc-app-input-phone>
+
+	<ddc-app-input-email
+		*ngSwitchCase="EnumFormType.EMAIL"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+	></ddc-app-input-email>
+
+	<ddc-app-input-color
+		*ngSwitchCase="EnumFormType.COLOR"
+		[id]="id"
+		[field]="field"
+		[automaticValidators]="automaticValidators"
+	></ddc-app-input-color>
+</ng-container>

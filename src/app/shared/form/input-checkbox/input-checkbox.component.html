@@ -1,0 +1,21 @@
+<ion-list [ngClass]="cssInput" [ngStyle]="field.cssStyle">
+	<ion-item *ngFor="let option of options; let i = index">
+		<ion-checkbox
+			labelPlacement="end"
+			id="{{ id + '_' + i }}"
+			value="{{ option.key }}"
+			[checked]="checkedMap.get(i)"
+			[disabled]="field.formControl.disabled"
+			(ionChange)="selectItem(option)"
+			[innerHtml]="
+				translateKey(option.text) | translate : translateParams(option.text) | escapehtml
+			"
+		></ion-checkbox>
+	</ion-item>
+</ion-list>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

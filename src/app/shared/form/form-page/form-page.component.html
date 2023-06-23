@@ -1,0 +1,19 @@
+<form *ngIf="form && groups && groups.length">
+	<ng-container *ngFor="let group of groups">
+		<ion-grid *ngIf="group.hasRow()">
+			<ion-row>
+				<ion-col *ngFor="let field of group.fields" [size]="field.sizeGroup">
+					<ddc-app-input-generic [control]="field.formControl" [field]="field">
+					</ddc-app-input-generic>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ng-container *ngIf="!group.hasRow()">
+			<ng-container *ngFor="let field of group.fields">
+				<ddc-app-input-generic [control]="field.formControl" [field]="field">
+				</ddc-app-input-generic>
+			</ng-container>
+		</ng-container>
+	</ng-container>
+</form>

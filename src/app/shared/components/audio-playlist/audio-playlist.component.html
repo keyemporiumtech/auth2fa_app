@@ -1,0 +1,93 @@
+<ion-list class="playlist">
+	<ion-list-header *ngIf="title">{{
+		translateKey(title) | translate : translateParams(title)
+	}}</ion-list-header>
+
+	<ion-item>
+		<ion-fab-button
+			[disabled]="currentPlaylistIndex === 0"
+			color="{{ currentPlaylistIndex === 0 ? 'light' : 'dark' }}"
+			(click)="prev()"
+		>
+			<ion-icon name="play-back" item-start></ion-icon>
+		</ion-fab-button>
+		<ng-container *ngFor="let audio of playlist; let i = index">
+			<div [hidden]="i !== currentPlaylistIndex">
+				<ddc-init-embed-audio
+					#embedAudios
+					[path]="audio.path"
+					[controls]="controls"
+					[initVolume]="initVolume"
+					(endedEmit)="onEnd($event)"
+				>
+				</ddc-init-embed-audio>
+			</div>
+		</ng-container>
+		<ion-fab-button
+			[disabled]="currentPlaylistIndex === playlist.length - 1"
+			color="{{ currentPlaylistIndex === playlist.length - 1 ? 'light' : 'dark' }}"
+			(click)="next()"
+		>
+			<ion-icon name="play-forward" item-start></ion-icon>
+		</ion-fab-button>
+
+		<ion-range
+			*ngIf="showVolume && (currentVolume || currentVolume >= 0)"
+			id="volume-{{ id }}"
+			min="0"
+			max="10"
+			value="{{ volumeDecode }}"
+			(ionChange)="changeVolume($event)"
+		>
+			<ion-icon
+				slot="start"
+				size="small"
+				name="{{ currentVolume === 0 ? 'volume-mute' : 'volume-low' }}"
+			></ion-icon>
+			<ion-icon slot="end" name="volume-high"></ion-icon>
+		</ion-range>
+	</ion-item>
+
+	<ion-item *ngFor="let audio of playlist; let i = index" class="audio-item">
+		<ion-avatar *ngIf="i !== currentPlaylistIndex" item-start>
+			<ion-icon class="pointer" name="play" item-start (click)="change(i)"></ion-icon>
+		</ion-avatar>
+		<ion-avatar
+			*ngIf="i === currentPlaylistIndex && status(i) === EnumStatusPlayer.PLAYING"
+			item-start
+		>
+			<ion-icon
+				class="pointer"
+				color="success"
+				name="pause"
+				item-start
+				(click)="player(i)?.pause()"
+			></ion-icon>
+		</ion-avatar>
+		<ion-avatar
+			*ngIf="i === currentPlaylistIndex && status(i) !== EnumStatusPlayer.PLAYING"
+			item-start
+		>
+			<ion-icon
+				class="pointer"
+				color="success"
+				name="play"
+				item-start
+				(click)="player(i)?.play()"
+			></ion-icon>
+		</ion-avatar>
+		<div style="width: 80%">
+			<ion-text *ngIf="audio.title" class="audio-title">{{
+				translateKey(audio.title) | translate : translateParams(audio.title)
+			}}</ion-text>
+			<span *ngIf="audio.author" class="audio-author">({{ audio.author }})</span>
+			<hr />
+			<ion-text ion-text *ngIf="audio.description" class="audio-description">{{
+				translateKey(audio.description) | translate : translateParams(audio.description)
+			}}</ion-text>
+		</div>
+		<ion-note *ngIf="audio.duration" class="audio-duration" item-end>{{
+			audio.durationText
+		}}</ion-note>
+	</ion-item>
+</ion-list>

@@ -1,0 +1,37 @@
+{
+	"MESSAGE": {
+		"AUTH": {
+			"TOKEN_NOT_VALID": "Jeton d'application non valide"
+		},
+		"CONFIRM_OPERATION": {
+			"TITLE": "Code de confirmation d'opération",
+			"QUESTION_MAIL": "Entrez le code que nous vous avons envoyé par email",
+			"QUESTION_SMS": "Entrez le code que nous vous avons envoyé par sms"
+		},
+		"GENERIC_ERROR": "Une erreur de serveur s'est produite",
+		"NO_OPERATION": "Opération non réussie",
+		"NO_RECORD": "Données absentes ou saisie invalide",
+		"NO_RECORDS": "Il n'y a pas d'articles",
+		"RESOURCE": {
+			"FILE_CREATED": "Fichier {{filename}} créé",
+			"FILE_EXISTS": "Le fichier {{filename}} existe déjà",
+			"FILE_NOT_EXISTS": "Le fichier {{filename}} n'existe pas",
+			"FILES_CREATED": "Tous les fichiers ont été créés",
+			"FOLDER_CREATED": "Dossier {{path}} créé",
+			"FOLDER_EXISTS": "Le dossier {{path}} existe déjà",
+			"FOLDER_NOT_EXISTS": "Le dossier {{path}} n'existe pas",
+			"FOLDER_REMOVED": "Dossier {{path}} supprimé",
+			"FOLDER_REMOVED_RECURSIVELY": "Dossier {{path}} supprimé de manière récursive",
+			"NOT_FOUND": "Ressource non disponible"
+		},
+		"SESSION_INVALID": "Session invalide",
+		"TITLE": {
+			"INFO": "Information",
+			"WARNING": "Avertissement",
+			"ERROR": "Erreur"
+		}
+	},
+	"EXCEPTION": {
+		"TOKEN_ERROR": "Session invalide"
+	}
+}

@@ -1,0 +1,66 @@
+<form [formGroup]="form">
+	<ion-grid>
+		<ion-row>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_ipname.label) | translate : translateParams(FLD_ipname.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'ipname'" [field]="FLD_ipname"></ddc-app-input-text>
+			</ion-col>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_subject.label) | translate : translateParams(FLD_subject.label) }}
+				</ion-label>
+				<ddc-app-input-text [id]="'subject'" [field]="FLD_subject"></ddc-app-input-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{
+						translateKey(FLD_sendername.label) | translate : translateParams(FLD_sendername.label)
+					}}
+				</ion-label>
+				<ddc-app-input-text [id]="'sendername'" [field]="FLD_sendername"></ddc-app-input-text>
+			</ion-col>
+			<ion-col [size]="6">
+				<ion-label position="floating"
+					>{{
+						translateKey(FLD_senderemail.label) | translate : translateParams(FLD_senderemail.label)
+					}}
+				</ion-label>
+				<ddc-app-input-text [id]="'senderemail'" [field]="FLD_senderemail"></ddc-app-input-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col [size]="12">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_message.label) | translate : translateParams(FLD_message.label) }}
+				</ion-label>
+				<ddc-app-input-textarea [id]="'message'" [field]="FLD_message"></ddc-app-input-textarea>
+			</ion-col>
+			<ion-col [size]="12">
+				<ion-label position="floating"
+					>{{ translateKey(FLD_dtasend.label) | translate : translateParams(FLD_dtasend.label) }}
+				</ion-label>
+				<ddc-app-input-date [id]="'dtasend'" [field]="FLD_dtasend"></ddc-app-input-date>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</form>
+
+<div class="ion-padding">
+	<ion-button class="ion-margin" color="dark" (click)="changeMode(formMode.UPDATE)">
+		<ion-icon name="create" item-start></ion-icon>
+	</ion-button>
+	<ion-button class="ion-margin" color="dark" (click)="changeMode(formMode.DETAIL)">
+		<ion-icon name="eye" item-start></ion-icon>
+	</ion-button>
+	<ion-button class="ion-margin" color="dark" [disabled]="!form.valid" (click)="save()">
+		<ion-icon name="save" item-start></ion-icon>
+	</ion-button>
+</div>
+
+<div *ngIf="modelToSave" class="ion-padding-vertical">{{ modelToSave | json }}</div>

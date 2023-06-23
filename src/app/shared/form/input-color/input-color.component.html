@@ -1,0 +1,23 @@
+<ion-grid>
+	<ion-row>
+		<ion-col size="8">
+			<ion-input
+				[id]="id"
+				type="color"
+				[ngClass]="cssInput"
+				[ngStyle]="field.cssStyle"
+				[formControl]="field.formControl"
+			>
+			</ion-input>
+		</ion-col>
+		<ion-col size="4">
+			<strong>{{ field.formControl.value }}</strong>
+		</ion-col>
+	</ion-row>
+</ion-grid>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

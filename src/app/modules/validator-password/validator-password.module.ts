@@ -1,0 +1,48 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PasswordService } from './services/password.service';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { KitModule } from '@ddc/kit';
+import { SharedModule } from '../../shared/shared.module';
+import { ApiModule } from '../api/api.module';
+import { TestValidatorPasswordComponent } from './components/test-validator-password/test-validator-password.component';
+// eslint-disable-next-line max-len
+import { TestInputPasswordAsyncComponent } from './components/test-validator-password/test-input-password-async/test-input-password-async.component';
+import { InputPasswordAsyncComponent } from './components/input-password-async/input-password-async.component';
+import { KitIonicModule } from '@ddc/kit-ionic';
+import { IonicModule } from '@ionic/angular';
+
+@NgModule({
+	declarations: [
+		InputPasswordAsyncComponent,
+		TestValidatorPasswordComponent,
+		TestInputPasswordAsyncComponent,
+	],
+	imports: [
+		CommonModule,
+		IonicModule,
+		HttpClientModule,
+		TranslateModule,
+		FormsModule,
+		ReactiveFormsModule,
+		KitModule,
+		SharedModule,
+		ApiModule,
+		KitIonicModule,
+	],
+	exports: [
+		InputPasswordAsyncComponent,
+		TestValidatorPasswordComponent,
+		TestInputPasswordAsyncComponent,
+	],
+})
+export class ValidatorPasswordModule {
+	static forRoot() {
+		return {
+			ngModule: ValidatorPasswordModule,
+			providers: [PasswordService],
+		};
+	}
+}

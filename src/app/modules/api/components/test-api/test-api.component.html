@@ -1,0 +1,17 @@
+<ion-text>
+	<h1>Modulo api</h1>
+</ion-text>
+
+<ion-list>
+	<ion-item button (click)="set('UNIQUE')">
+		<ion-label>Test chiamata unique</ion-label>
+	</ion-item>
+	<ion-item button (click)="set('LIST')">
+		<ion-label>Test chiamata list</ion-label>
+	</ion-item>
+</ion-list>
+
+<div *ngIf="view" class="ion-padding-vertical">
+	<wiki-test-api-unique *ngIf="view === 'UNIQUE'"></wiki-test-api-unique>
+	<wiki-test-api-paginate *ngIf="view === 'LIST'"></wiki-test-api-paginate>
+</div>

@@ -1,0 +1,19 @@
+<hr *ngIf="showDimension" />
+<strong *ngIf="showDimension" slot="start">{{ dimensionText }}</strong>
+<ion-textarea
+	[id]="id"
+	[ngClass]="cssInput"
+	[ngStyle]="field.cssStyle"
+	placeholder="{{
+		translateKey(field.placeholder) | translate : translateParams(field.placeholder)
+	}}"
+	[formControl]="field.formControl"
+	[maxlength]="maxLength"
+	[minlength]="minLength"
+></ion-textarea>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

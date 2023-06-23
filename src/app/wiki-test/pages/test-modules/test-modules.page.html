@@ -1,0 +1,88 @@
+<ddc-app-header
+	[headerTitle]="'WIKI->Modules'"
+	[flgBack]="true"
+	[hrefBack]="'wiki'"
+	[flgMenuItems]="true"
+	[menuId]="'modulesMenu'"
+>
+</ddc-app-header>
+
+<ion-menu side="start" menuId="modulesMenu" contentId="main-modules">
+	<ion-header>
+		<ion-toolbar color="primary">
+			<ion-title>Modules Examples</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('API', 'modulesMenu')">
+				<ion-label>api</ion-label>
+			</ion-item>
+
+			<!-- -->
+			<ion-item button (click)="setAndCloseMenu('RESOURCES', 'modulesMenu')">
+				<ion-label>resources</ion-label>
+			</ion-item>
+			<!-- -->
+			<ion-item button (click)="setAndCloseMenu('COMMUNICATION', 'modulesMenu')">
+				<ion-label>communication</ion-label>
+			</ion-item>
+			<!-- -->
+			<ion-item button (click)="setAndCloseMenu('AUTHENTICATION', 'modulesMenu')">
+				<ion-label>authentication</ion-label>
+			</ion-item>
+			<!-- -->
+			<ion-item button (click)="setAndCloseMenu('LOCALESYSTEM', 'modulesMenu')">
+				<ion-label>localesystem</ion-label>
+			</ion-item>
+			<!-- -->
+			<ion-item button (click)="setAndCloseMenu('VALIDATOR_IBAN', 'modulesMenu')">
+				<ion-label>validator_iban</ion-label>
+			</ion-item>
+			<!-- -->
+			<ion-item button (click)="setAndCloseMenu('VALIDATOR_CREDITCARD', 'modulesMenu')">
+				<ion-label>validator_creditcard</ion-label>
+			</ion-item>
+			<!-- -->
+			<ion-item button (click)="setAndCloseMenu('VALIDATOR_PASSWORD', 'modulesMenu')">
+				<ion-label>validator_password</ion-label>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+
+<ion-content class="ion-padding">
+	<div id="main-modules">
+		<div class="ion-padding-top">
+			<ion-icon
+				*ngIf="view"
+				class="pointer"
+				name="close-circle"
+				slot="end"
+				size="large"
+				(click)="set(undefined)"
+			>
+			</ion-icon>
+		</div>
+
+		<wiki-test-api *ngIf="view === 'API'"></wiki-test-api>
+		<!-- -->
+		<wiki-test-resources *ngIf="view === 'RESOURCES'"></wiki-test-resources>
+		<!-- -->
+		<wiki-test-communication *ngIf="view === 'COMMUNICATION'"></wiki-test-communication>
+		<!-- -->
+		<wiki-test-authentication *ngIf="view === 'AUTHENTICATION'"></wiki-test-authentication>
+		<!-- -->
+		<wiki-test-localesystem *ngIf="view === 'LOCALESYSTEM'"></wiki-test-localesystem>
+		<!-- -->
+		<wiki-test-validator-iban *ngIf="view === 'VALIDATOR_IBAN'"></wiki-test-validator-iban>
+		<!-- -->
+		<wiki-test-validator-creditcard
+			*ngIf="view === 'VALIDATOR_CREDITCARD'"
+		></wiki-test-validator-creditcard>
+		<!-- -->
+		<wiki-test-validator-password
+			*ngIf="view === 'VALIDATOR_PASSWORD'"
+		></wiki-test-validator-password>
+	</div>
+</ion-content>

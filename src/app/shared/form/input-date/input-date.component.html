@@ -1,0 +1,20 @@
+<ion-card [ngClass]="cssInput" [ngStyle]="field.cssStyle">
+	<ion-item>
+		<ion-datetime
+			[id]="id"
+			[disabled]="field.formControl.disabled"
+			[value]="current"
+			[min]="minValue"
+			[max]="maxValue"
+			(ionChange)="onChange($event)"
+		>
+		</ion-datetime>
+		<strong *ngIf="showTimezone" class="ion-padding" slot="start">{{ timezoneName }}</strong>
+	</ion-item>
+</ion-card>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

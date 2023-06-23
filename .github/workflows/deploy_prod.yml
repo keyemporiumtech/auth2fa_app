@@ -1,0 +1,52 @@
+name: CI -> Deploy PROD
+on:
+  push:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.10.0"
+
+      - name: Install NPM Modules
+        run: npm install
+
+      - name: Install barrelsby
+        run: npm install -g barrelsby@1.0.2
+
+      - name: Build Kit Library
+        run: barrelsby --directory ./src/app/kit/ --delete -e '.*(^.*spec.*$).*' -n index.ts -q
+
+      - name: Build OAuth Social Library
+        run: barrelsby --directory ./src/app/oauth-social/ --delete -e '.*(^.*spec.*$).*' -n index.ts -q
+
+      - name: Build Rest Library
+        run: barrelsby --directory ./src/app/rest/ --delete -e '.*(^.*spec.*$).*' -n index.ts -q
+
+      - name: Build Kit Ionic Library
+        run: barrelsby --directory ./src/app/kit-ionic/ --delete -e '.*(^.*spec.*$).*' -n index.ts -q
+
+      - name: Install angular cli
+        run: npm install -g @angular/cli@15.2.1
+
+      - name: Build Project
+        run: ng build --configuration=production --base-href ./
+
+      - name: Copy deploy files
+        run: |
+          cp -R ./src/config/deploy/prod/. ./dist/${{ secrets.APP_NAME }}
+
+      - name: Upload FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/${{ secrets.APP_NAME }}/
+          server-dir: ${{ secrets.PATH_PROD }}/
+          dangerous-clean-slate: true

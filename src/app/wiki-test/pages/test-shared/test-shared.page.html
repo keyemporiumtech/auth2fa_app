@@ -1,0 +1,82 @@
+<ddc-app-header
+	[headerTitle]="'WIKI->Shared'"
+	[flgBack]="true"
+	[hrefBack]="'wiki'"
+	[flgMenuItems]="true"
+	[menuId]="'sharedMenu'"
+>
+</ddc-app-header>
+
+<ion-menu side="start" menuId="sharedMenu" contentId="main-shared">
+	<ion-header>
+		<ion-toolbar color="primary">
+			<ion-title>Shared Examples</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('MODAL', 'sharedMenu')">
+				<ion-label>Modal</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('ALERT', 'sharedMenu')">
+				<ion-label>Alert</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('MESSAGE-ELEMENT', 'sharedMenu')">
+				<ion-label>message element</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('AUDIO-PLAYLIST', 'sharedMenu')">
+				<ion-label>audio playlist</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('TABLE-LIST', 'sharedMenu')">
+				<ion-label>table-list</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('MAP', 'sharedMenu')">
+				<ion-label>map</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item button (click)="setAndCloseMenu('ADDRESS-SEARCH', 'sharedMenu')">
+				<ion-label>address-search</ion-label>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+
+<ion-content class="ion-padding">
+	<div id="main-shared">
+		<div class="ion-padding-top">
+			<ion-icon
+				*ngIf="view"
+				class="pointer"
+				name="close-circle"
+				slot="end"
+				size="large"
+				(click)="set(undefined)"
+			>
+			</ion-icon>
+		</div>
+
+		<div *ngIf="view === 'MODAL'">
+			<!-- ESEMPIO 1 -->
+			<ion-button (click)="openModal('mod1', body1)">Esempio</ion-button>
+			<ng-template #body1> Esempio 1 body </ng-template>
+		</div>
+		<wiki-test-alert *ngIf="view === 'ALERT'"></wiki-test-alert>
+		<wiki-test-message-element *ngIf="view === 'MESSAGE-ELEMENT'"></wiki-test-message-element>
+		<wiki-test-audio-playlist *ngIf="view === 'AUDIO-PLAYLIST'"></wiki-test-audio-playlist>
+		<wiki-test-table-list *ngIf="view === 'TABLE-LIST'"></wiki-test-table-list>
+		<wiki-test-map *ngIf="view === 'MAP'"></wiki-test-map>
+		<wiki-test-address-search *ngIf="view === 'ADDRESS-SEARCH'"></wiki-test-address-search>
+	</div>
+	<div *ngIf="view === 'MODAL'">Descrizione modale</div>
+</ion-content>

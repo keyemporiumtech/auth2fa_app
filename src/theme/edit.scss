@@ -1,0 +1,18 @@
+.ion-valid{
+  border: 1px solid var(--mute) !important;  
+}
+
+/* --- ALERT */
+.alert-wrapper {
+  overflow-y:auto;
+  max-height:100vh;
+  .alert-message {
+    margin: .6rem;        
+  }
+}
+.alert-wrapper .alert-sub-title {
+  font-size: $size-sm;
+  font-style: italic;
+}
+
+/* FORM */

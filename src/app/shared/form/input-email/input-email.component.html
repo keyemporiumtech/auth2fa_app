@@ -1,0 +1,16 @@
+<ion-input
+	[id]="id"
+	type="email"
+	[ngClass]="cssInput"
+	[ngStyle]="field.cssStyle"
+	placeholder="{{
+		translateKey(field.placeholder) | translate : translateParams(field.placeholder)
+	}}"
+	[formControl]="field.formControl"
+></ion-input>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

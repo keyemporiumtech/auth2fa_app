@@ -1,0 +1,12 @@
+<div *ngIf="!isLoggedin && isReady">
+	<ion-button class="ion-margin" color="danger" (click)="signInGoogle()">
+		Login with Google
+	</ion-button>
+	<ion-button class="ion-margin" color="secondary" (click)="signInFacebook()">
+		Login with Facebook
+	</ion-button>
+</div>
+
+<div *ngIf="isLoggedin && isReady">
+	<ion-button class="ion-margin" color="primary" (click)="signOut()"> Log Out </ion-button>
+</div>

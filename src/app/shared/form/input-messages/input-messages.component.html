@@ -1,0 +1,23 @@
+<p *ngFor="let support of supportMessages">
+	<ion-icon [name]="iconSupport" slot="start" class="input-support-icon ion-margin-end"></ion-icon>
+	<span
+		class="input-support-message"
+		[innerHTML]="translateKey(support) | translate : translateParams(support)"
+	></span>
+</p>
+
+<p *ngFor="let valid of validMessages">
+	<ion-icon [name]="iconValid" slot="start" class="input-valid-icon ion-margin-end"></ion-icon>
+	<span
+		class="input-valid-message"
+		[innerHTML]="translateKey(valid) | translate : translateParams(valid)"
+	></span>
+</p>
+
+<p *ngFor="let invalid of errorMessages">
+	<ion-icon [name]="iconError" slot="start" class="input-invalid-icon ion-margin-end"></ion-icon>
+	<span
+		class="input-invalid-message"
+		[innerHTML]="translateKey(invalid) | translate : translateParams(invalid)"
+	></span>
+</p>

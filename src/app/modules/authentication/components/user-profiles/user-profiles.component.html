@@ -1,0 +1,13 @@
+<form [formGroup]="formUserProfiles">
+	<ion-label position="floating" [attr.for]="id">
+		{{ translateKey(selectProfiles.label) | translate : translateParams(selectProfiles.label) }}
+	</ion-label>
+	<ddc-app-input-select
+		#profiles
+		[id]="id"
+		[field]="selectProfiles"
+		[options]="optionProfiles"
+		[noMargin]="true"
+	>
+	</ddc-app-input-select>
+</form>

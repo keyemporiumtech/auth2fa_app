@@ -1,0 +1,51 @@
+<ion-text>
+	<h4>Modulo Social Oauth</h4>
+</ion-text>
+
+<div *ngIf="isLoggedin === false">
+	<ion-button class="ion-margin" color="danger" (click)="signInGoogle()">
+		Login with Google
+	</ion-button>
+	<ion-button class="ion-margin" color="secondary" (click)="signInFacebook()">
+		Login with Facebook
+	</ion-button>
+</div>
+
+<div *ngIf="isLoggedin === true">
+	<ion-label position="floating">Photo</ion-label>
+	<img
+		[src]="socialUser.photoUrl"
+		referrerpolicy="no-referrer"
+		id="photo"
+		[style.width]="'360px'"
+	/>
+
+	<ion-label position="floating">First Name</ion-label>
+	<ion-input
+		type="text"
+		class="form-control"
+		[value]="socialUser.firstName"
+		id="firstname"
+		readonly
+	></ion-input>
+
+	<ion-label position="floating">Last Name</ion-label>
+	<ion-input
+		type="text"
+		class="form-control"
+		[value]="socialUser.lastName"
+		id="lastname"
+		readonly
+	></ion-input>
+
+	<ion-label position="floating">Email</ion-label>
+	<ion-input
+		type="text"
+		class="form-control"
+		[value]="socialUser.email"
+		id="email"
+		readonly
+	></ion-input>
+
+	<ion-button class="ion-margin" color="primary" (click)="signOut()"> Log Out </ion-button>
+</div>

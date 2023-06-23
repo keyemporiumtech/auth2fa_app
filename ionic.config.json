@@ -1,0 +1,12 @@
+{
+  "defaultProject": "mod-app",
+  "projects": {
+    "mod-app": {
+      "name": "mod-app",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular"
+    }
+  }
+}

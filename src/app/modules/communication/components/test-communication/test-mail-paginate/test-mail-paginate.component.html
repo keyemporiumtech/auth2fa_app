@@ -1,0 +1,24 @@
+<ddc-app-table-list
+	[groups]="groups"
+	[colsTable]="getColsTable()"
+	[formFilters]="formFilters"
+	[list]="list"
+	[pagesNumbers]="pagesNumbers"
+	[current]="current"
+	[orders]="orders"
+	(resetEmit)="reset()"
+	(searchEmit)="onSearch()"
+	(orderEmit)="order($event.key, $event.value)"
+	(pageEmit)="page($event)"
+	[templateActionsIntest]="headerActions"
+	[templateActionsRow]="rowActions"
+>
+</ddc-app-table-list>
+
+<ng-template #headerActions>
+	<ion-icon name="cog"></ion-icon>
+</ng-template>
+
+<ng-template #rowActions let-item="item">
+	<ion-icon class="ion-margin-right pointer" name="create" (click)="edit(item)"></ion-icon>
+</ng-template>

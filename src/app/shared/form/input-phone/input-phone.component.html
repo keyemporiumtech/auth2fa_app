@@ -1,0 +1,71 @@
+<ion-grid>
+	<ion-row>
+		<ion-col size="5">
+			<ion-select
+				*ngIf="!dropdownPrefix"
+				[id]="'prefix_' + id"
+				[ngClass]="cssInputPrefix"
+				[formControl]="form.get('prefix')"
+				(ionCancel)="onReset()"
+			>
+				<ion-select-option
+					*ngFor="let prefix of prefixes"
+					[innerHTML]="
+						translateKey(prefix.text) | translate : translateParams(prefix.text) | escapehtml
+					"
+				>
+				</ion-select-option>
+			</ion-select>
+
+			<ion-button
+				*ngIf="dropdownPrefix"
+				size="small"
+				class="dropdown-prefix-button"
+				(click)="accordion.toggle()"
+				[innerHTML]="
+					translateKey(currentPrefix ? currentPrefix.text : defaultPrefixText)
+						| translate : translateParams(currentPrefix ? currentPrefix.text : defaultPrefixText)
+						| escapehtml
+				"
+			>
+			</ion-button>
+			<ddc-app-accordion *ngIf="dropdownPrefix" [cssClass]="'dropdown-prefix'" #accordion>
+				<div
+					class="dropdown-item"
+					[ngClass]="{ 'dropdown-item-selected': !form.get('prefix').value }"
+					(click)="form.get('prefix').setValue(''); accordion.toggle()"
+					[innerHTML]="
+						translateKey(defaultPrefixText)
+							| translate : translateParams(defaultPrefixText)
+							| escapehtml
+					"
+				></div>
+				<ng-container *ngFor="let prefix of prefixes">
+					<div
+						class="dropdown-item"
+						[ngClass]="{ 'dropdown-item-selected': form.get('prefix').value === prefix.key }"
+						(click)="form.get('prefix').setValue(prefix.key); accordion.toggle()"
+						[innerHTML]="
+							translateKey(prefix.text) | translate : translateParams(prefix.text) | escapehtml
+						"
+					></div>
+				</ng-container>
+			</ddc-app-accordion>
+		</ion-col>
+
+		<ion-col size="7">
+			<ion-input
+				[id]="'tel_' + id"
+				type="tel"
+				[ngClass]="cssInputPhone"
+				[formControl]="form.get('phone')"
+			></ion-input>
+		</ion-col>
+	</ion-row>
+</ion-grid>
+
+<ddc-app-input-messages
+	[supportMessages]="field.supports"
+	[errorMessages]="errorMessages"
+	[validMessages]="validMessages"
+></ddc-app-input-messages>

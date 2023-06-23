@@ -1,0 +1,20 @@
+<ion-text>
+	<h1>Modulo communication</h1>
+</ion-text>
+
+<ion-list>
+	<ion-item button (click)="setDetailMail()">
+		<ion-label>Test chiamata mail/unique</ion-label>
+	</ion-item>
+	<ion-item button (click)="set('MAIL-LIST')">
+		<ion-label>Test chiamata mail/list</ion-label>
+	</ion-item>
+</ion-list>
+
+<div *ngIf="view" class="ion-padding-vertical">
+	<wiki-test-mail-unique *ngIf="view === 'MAIL-UNIQUE'" [idIn]="idMail"></wiki-test-mail-unique>
+	<wiki-test-mail-paginate
+		*ngIf="view === 'MAIL-LIST'"
+		(emitSelected)="setDetailMail($event)"
+	></wiki-test-mail-paginate>
+</div>

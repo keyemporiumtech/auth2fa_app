@@ -1,0 +1,23 @@
+<form [formGroup]="formLanguage">
+	<ion-label *ngIf="showLabel" position="floating">
+		{{ translateKey(selectLanguages.label) | translate : translateParams(selectLanguages.label) }}
+	</ion-label>
+	<ng-container *ngIf="!showImage">
+		<ddc-app-input-select
+			#languages
+			[id]="id"
+			[field]="selectLanguages"
+			[options]="optionLanguages"
+		>
+		</ddc-app-input-select>
+	</ng-container>
+	<ng-container *ngIf="showImage">
+		<ddc-app-input-select-html
+			#languages
+			[id]="id"
+			[field]="selectLanguages"
+			[options]="optionLanguages"
+		>
+		</ddc-app-input-select-html>
+	</ng-container>
+</form>

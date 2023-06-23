@@ -1,0 +1,56 @@
+<ion-text>
+	<h1>Map</h1>
+</ion-text>
+
+<ion-text>
+	<h4>mappa con un solo marker</h4>
+</ion-text>
+
+<div class="ion-margin">
+	<ddc-app-map
+		[id]="'map1'"
+		[latitude]="41.909986"
+		[longitude]="12.3959125"
+		[textMarker]="'<b>Roma</b>'"
+	>
+	</ddc-app-map>
+</div>
+
+<div class="ion-margin">
+	<ddc-app-map
+		[id]="'map2'"
+		[latitude]="41.909986"
+		[longitude]="12.3959125"
+		[textMarker]="'<b>Roma</b>'"
+		[notScroll]="true"
+	>
+	</ddc-app-map>
+</div>
+
+<ion-text>
+	<h4>mappa con più markers</h4>
+</ion-text>
+
+<div class="ion-margin">
+	<ddc-app-map
+		#map3
+		[id]="'map3'"
+		[latitude]="41.909986"
+		[longitude]="12.3959125"
+		[textMarker]="'<b>Roma</b>'"
+		[notScroll]="true"
+	>
+	</ddc-app-map>
+</div>
+
+<ion-button class="ion-margin" color="primary" (click)="addMarkerRome(map3, undefined, true)">
+	Aggiungi marker
+</ion-button>
+
+<ion-button class="ion-margin" color="primary" (click)="addMarkerRome(map3, icon, true)">
+	Aggiungi marker con icona
+</ion-button>
+
+<ion-button class="ion-margin" color="primary" (click)="addMarkerRome(map3, undefined, true, true)">
+	Aggiungi marker con AddressModel automatico
+</ion-button>

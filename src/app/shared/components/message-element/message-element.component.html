@@ -1,0 +1,67 @@
+<div class="message-element">
+	<!-- DIV -->
+
+	<div
+		id="{{ idMessage }}"
+		*ngIf="typeComponent === 'DIV' && currentMessage"
+		[ngClass]="cssClassMessage"
+	>
+		<ion-card>
+			<ion-card-header>
+				<ion-item>
+					<ion-label
+						*ngIf="currentMessage?.title"
+						class="div-header"
+						[innerHtml]="
+							translateKey(currentMessage?.title)
+								| translate : translateParams(currentMessage?.title)
+						"
+					>
+					</ion-label>
+					<ion-icon class="pointer" [name]="iconClose" slot="end" size="large" (click)="close()">
+					</ion-icon>
+				</ion-item>
+			</ion-card-header>
+			<ion-card-content
+				class="div-body"
+				[innerHtml]="
+					translateKey(currentMessage?.text) | translate : translateParams(currentMessage?.text)
+				"
+			>
+			</ion-card-content>
+			<ion-card-content
+				*ngIf="currentMessage?.exception && enableDebug"
+				class="div-exception"
+				[innerHtml]="
+					translateKey(currentMessage?.exception)
+						| translate : translateParams(currentMessage?.exception)
+				"
+			>
+			</ion-card-content>
+		</ion-card>
+	</div>
+	<!-- MODAL -->
+	<div
+		id="{{ idMessage }}"
+		*ngIf="typeComponent === 'MODAL' && currentMessage"
+		[ngClass]="cssClassMessage"
+	>
+		<ng-template #bodyModal>
+			<div
+				*ngIf="currentMessage?.text"
+				class="modal-body"
+				[innerHtml]="
+					translateKey(currentMessage?.text) | translate : translateParams(currentMessage?.text)
+				"
+			></div>
+			<div
+				*ngIf="currentMessage?.exception && enableDebug"
+				class="modal-exception"
+				[innerHtml]="
+					translateKey(currentMessage?.exception)
+						| translate : translateParams(currentMessage?.exception)
+				"
+			></div>
+		</ng-template>
+	</div>
+</div>

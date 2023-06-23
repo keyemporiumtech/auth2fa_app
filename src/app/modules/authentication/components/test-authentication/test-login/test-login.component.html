@@ -1,0 +1,51 @@
+<ion-text>
+	<h5>Login</h5>
+</ion-text>
+
+<form [formGroup]="form">
+	<ion-label position="floating">{{ username.label }} </ion-label>
+	<ddc-app-input-text [id]="'username'" [field]="username"></ddc-app-input-text>
+
+	<ion-label position="floating">{{ password.label }} </ion-label>
+	<ddc-app-input-password
+		[id]="'password'"
+		[field]="password"
+		[almostOneLower]="true"
+		[almostOneUpper]="true"
+		[almostOneNumber]="true"
+		[automaticValidators]="true"
+	></ddc-app-input-password>
+
+	<ddc-app-input-checkbox [id]="'rememberme'" [field]="rememberme" [options]="optionRememberme">
+	</ddc-app-input-checkbox>
+
+	<ion-button class="ion-margin" color="dark" (click)="login()">Login</ion-button>
+</form>
+
+<div *ngIf="userResponse" class="ion-padding">
+	{{ userResponse | json }}
+	<div>
+		<ion-button class="ion-margin" color="dark" (click)="checkSession()">CheckSession</ion-button>
+		<ion-button class="ion-margin" color="dark" (click)="logout()">Logout</ion-button>
+	</div>
+	<div class="ion-margin">
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			{{ messageSession }}
+		</div>
+	</div>
+</div>
+
+<strong>authtoken</strong>: {{ authtoken }}<br />
+<strong>payload</strong>: {{ payload | json }}<br />
+<strong>userLogged</strong>: {{ userLogged | json }}<br />
+<strong>userId</strong>: {{ userId }}<br />
+<strong>userImage</strong>: {{ userImage }}<br />
+<strong>profile</strong>: {{ profile }}<br />
+<div *ngIf="expirationInfo" class="mt-2">
+	<strong>Expiration created</strong>: {{ expirationInfo?.createAt.toString('DD/MM/YYYY HH:mm:ss')
+	}}<br />
+	<strong>Expiration started</strong>: {{ expirationInfo?.startAt.toString('DD/MM/YYYY HH:mm:ss')
+	}}<br />
+	<strong>Expiration expired</strong>: {{ expirationInfo?.expireAt.toString('DD/MM/YYYY HH:mm:ss')
+	}}<br />
+</div>

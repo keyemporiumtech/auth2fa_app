@@ -1,0 +1,13 @@
+<ion-text>
+	<h1>Modulo validator-creditcard</h1>
+</ion-text>
+
+<ion-list>
+	<ion-item button (click)="set('INPUT_CREDITCARD')">
+		<ion-label>Componente input creditcard</ion-label>
+	</ion-item>
+</ion-list>
+
+<div *ngIf="view" class="ion-padding-vertical">
+	<wiki-test-input-creditcard *ngIf="view === 'INPUT_CREDITCARD'"></wiki-test-input-creditcard>
+</div>

@@ -1,0 +1,74 @@
+<div class="table-list">
+	<ng-container *ngIf="formFilters">
+		<ion-button expand="block" (click)="accordionSearch.toggle()">
+			<ion-icon [name]="iconSearch"></ion-icon>
+			{{ 'APP.BUTTON.SEARCH' | translate }}
+		</ion-button>
+		<ddc-app-accordion #accordionSearch>
+			<ddc-app-form-page
+				[form]="formFilters"
+				[flgOnInitValidation]="flgOnInitValidation"
+				[flgOnSubmitValidation]="flgOnSubmitValidation"
+				[submitted]="submitted"
+				[groups]="groups"
+			></ddc-app-form-page>
+
+			<ion-button class="ion-margin" color="dark" (click)="reset()">
+				<ion-icon name="{{ iconReset }}" item-start></ion-icon>
+				{{ 'APP.BUTTON.RESET' | translate }}
+			</ion-button>
+			<ion-button
+				class="ion-margin"
+				color="primary"
+				[disabled]="!formFilters.valid"
+				(click)="search()"
+			>
+				<ion-icon name="{{ iconSearch }}" item-start></ion-icon>
+				{{ 'APP.BUTTON.SEARCH' | translate }}
+			</ion-button>
+		</ddc-app-accordion>
+	</ng-container>
+
+	<ddc-app-loading *ngIf="loading"></ddc-app-loading>
+
+	<ion-grid *ngIf="list && list.length" class="table-grid">
+		<!-- INTESTAZIONE -->
+		<ion-row class="table-header">
+			<ion-col *ngFor="let col of colsTable">
+				<ddc-app-table-order
+					[orders]="orders"
+					[key]="col.key"
+					[label]="col.label"
+					(ascEmit)="order(col.key, 'asc')"
+					(descEmit)="order(col.key, 'desc')"
+				></ddc-app-table-order>
+			</ion-col>
+			<ion-col *ngIf="templateActionsIntest">
+				<ng-container *ngTemplateOutlet="templateActionsIntest"></ng-container>
+			</ion-col>
+		</ion-row>
+		<!-- RISULTATI -->
+		<ion-row *ngFor="let res of list" class="table-row">
+			<ion-col *ngFor="let col of colsTable">
+				<ng-container *ngIf="col.template; else fieldValue">
+					<ng-container *ngTemplateOutlet="col.template; context: { item: res }"></ng-container>
+				</ng-container>
+				<ng-template #fieldValue>
+					{{ resolveProperty(col.fieldModel, res) }}
+				</ng-template>
+			</ion-col>
+			<ion-col *ngIf="templateActionsRow">
+				<ng-container *ngTemplateOutlet="templateActionsRow; context: { item: res }"></ng-container>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ng-container *ngIf="pagesNumbers && pagesNumbers.length">
+		<ddc-app-table-paginate
+			[pagesNumbers]="pagesNumbers"
+			[current]="current"
+			(pageEmit)="page($event)"
+		>
+		</ddc-app-table-paginate>
+	</ng-container>
+</div>

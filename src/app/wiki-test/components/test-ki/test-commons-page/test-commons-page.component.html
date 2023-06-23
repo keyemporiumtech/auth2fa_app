@@ -1,0 +1,26 @@
+<ion-text>
+	<h1>Commons Pages</h1>
+</ion-text>
+
+<ion-list>
+	<ion-item
+		button
+		(click)="
+			go(
+				'test PDF',
+				'application/pdf',
+				EnumTypeMime.APPLICATION,
+				'pdf',
+				'../../assets/test/pdf/test.pdf'
+			)
+		"
+	>
+		<ion-label>PDF Link</ion-label>
+	</ion-item>
+	<ion-item
+		button
+		(click)="go('test MP3', 'audio/mp3', EnumTypeMime.AUDIO, 'mp3', 'assets/test/audio/test.mp3')"
+	>
+		<ion-label>Audio Link</ion-label>
+	</ion-item>
+</ion-list>

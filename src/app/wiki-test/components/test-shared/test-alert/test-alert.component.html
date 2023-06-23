@@ -1,0 +1,180 @@
+<ion-text>
+	<h1>Alert</h1>
+</ion-text>
+
+<ion-list>
+	<ion-item button (click)="simple.open()">
+		<ion-label>Alert Simple</ion-label>
+	</ion-item>
+	<ion-item button (click)="confirm.openConfirm()">
+		<ion-label>Alert with Confirm</ion-label>
+	</ion-item>
+	<ion-item button (click)="prompt.openPrompt()">
+		<ion-label>Prompt with Inputs and Buttons</ion-label>
+	</ion-item>
+	<ion-item button (click)="prompt.openPrompt(true, true)">
+		<ion-label>Prompt with Inputs and Buttons and without ok and cancel</ion-label>
+	</ion-item>
+</ion-list>
+
+<ddc-app-alert
+	#simple
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+></ddc-app-alert>
+<ddc-app-alert
+	#confirm
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+></ddc-app-alert>
+<ddc-app-alert
+	#prompt
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[fields]="inputs"
+	[buttons]="buttons"
+></ddc-app-alert>
+
+<ion-text>
+	<h1>Alert Style</h1>
+</ion-text>
+
+<ion-list>
+	<ion-item button (click)="info.openPrompt()">
+		<ion-label>INFO</ion-label>
+	</ion-item>
+	<ion-item button (click)="infoFill.openPrompt()">
+		<ion-label>INFO FILL</ion-label>
+	</ion-item>
+	<ion-item button (click)="warning.openPrompt()">
+		<ion-label>WARNING</ion-label>
+	</ion-item>
+	<ion-item button (click)="warningFill.openPrompt()">
+		<ion-label>WARNING FILL</ion-label>
+	</ion-item>
+	<ion-item button (click)="error.openPrompt()">
+		<ion-label>ERROR</ion-label>
+	</ion-item>
+	<ion-item button (click)="errorFill.openPrompt()">
+		<ion-label>ERROR FILL</ion-label>
+	</ion-item>
+	<ion-item button (click)="myclass.openPrompt()">
+		<ion-label>Specific Class</ion-label>
+	</ion-item>
+</ion-list>
+
+<ddc-app-alert
+	#info
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[type]="'INFO'"
+	[fields]="inputs"
+	[buttons]="buttons"
+></ddc-app-alert>
+<ddc-app-alert
+	#infoFill
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[type]="'INFO'"
+	[fill]="true"
+	[fields]="inputs"
+	[buttons]="buttons"
+></ddc-app-alert>
+<ddc-app-alert
+	#warning
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[type]="'WARNING'"
+	[fields]="inputs"
+	[buttons]="buttons"
+></ddc-app-alert>
+<ddc-app-alert
+	#warningFill
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[type]="'WARNING'"
+	[fill]="true"
+	[fields]="inputs"
+	[buttons]="buttons"
+></ddc-app-alert>
+<ddc-app-alert
+	#error
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[type]="'ERROR'"
+	[fields]="inputs"
+	[buttons]="buttons"
+></ddc-app-alert>
+<ddc-app-alert
+	#errorFill
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[type]="'ERROR'"
+	[fill]="true"
+	[fields]="inputs"
+	[buttons]="buttons"
+></ddc-app-alert>
+
+<ddc-app-alert
+	#myclass
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[cssClass]="'alert-info-fill'"
+	[fields]="inputs"
+	[buttons]="buttons"
+></ddc-app-alert>
+
+<ion-text>
+	<h1>Alert Events</h1>
+</ion-text>
+
+<p *ngIf="result">{{ result | json }}</p>
+
+<ion-list>
+	<ion-item button (click)="event1.open()">
+		<ion-label>Catch Buttons data: simple</ion-label>
+	</ion-item>
+	<ion-item button (click)="event2.openConfirm()">
+		<ion-label>Catch Buttons data: confirm</ion-label>
+	</ion-item>
+	<ion-item button (click)="event3.openPrompt()">
+		<ion-label>Catch Buttons data: prompt</ion-label>
+	</ion-item>
+</ion-list>
+
+<ddc-app-alert
+	#event1
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	(cancelEmit)="onClose($event)"
+	(okEmit)="onOk($event)"
+></ddc-app-alert>
+<ddc-app-alert
+	#event2
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	(cancelEmit)="onClose($event)"
+	(okEmit)="onOk($event)"
+></ddc-app-alert>
+<ddc-app-alert
+	#event3
+	[title]="'Title'"
+	[subTitle]="'Author'"
+	[message]="'Description of alert'"
+	[fields]="inputs"
+	[buttons]="buttons"
+	(cancelEmit)="onClose($event)"
+	(okEmit)="onOk($event)"
+></ddc-app-alert>

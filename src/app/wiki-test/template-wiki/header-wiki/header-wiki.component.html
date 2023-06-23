@@ -1,0 +1,9 @@
+<ddc-app-header
+	[headerTitle]="'WIKI'"
+	[flgBack]="true"
+	[hrefBack]="'app'"
+	[flgMenuItems]="flgMenuItems"
+	[menuId]="'wikiMenu'"
+>
+</ddc-app-header>
+<wiki-menu-wiki *ngIf="flgMenuItems"></wiki-menu-wiki>

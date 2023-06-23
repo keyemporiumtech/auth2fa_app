@@ -1,0 +1,8 @@
+<ion-app>
+	<ion-router-outlet></ion-router-outlet>
+	<ddc-app-message-element
+		[typeComponent]="'MODAL'"
+		[idMessage]="idMessageModal"
+	></ddc-app-message-element>
+	<ddc-app-banner-cookie *ngIf="flagCookie"></ddc-app-banner-cookie>
+</ion-app>

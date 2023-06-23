@@ -1,0 +1,8 @@
+<ddc-app-header
+	[headerTitle]="headerTitle"
+	[flgLogo]="true"
+	[flgMenuItems]="flgMenuItems"
+	[menuId]="'publicMenu'"
+>
+</ddc-app-header>
+<public-menu-public *ngIf="flgMenuItems"></public-menu-public>
